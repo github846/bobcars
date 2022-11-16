@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import MainContext from "../../Store/Main";
-import classes from "./InvoiceItem.module.css";
+import classes from "../Layout/MyCard.module.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faList, faHouseMedical, faFilePen } from "@fortawesome/free-solid-svg-icons";

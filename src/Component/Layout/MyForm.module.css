@@ -1,10 +1,20 @@
-.submit_group input
+.submit_group input, button
 {
     border-radius: 5px;
     border: none;
+    padding: 5px;
+}
+
+button
+{
+    background: #4df;
+    color: #06d;
+}
+
+.submit_group input
+{
     background: #06D;
     color: #fff;
-    padding: 5px;
 }
 
 .form_container
@@ -13,6 +23,7 @@
     background: #eee;
     box-shadow: #888 2px 2px 2px;
     width: 50%;
+    border-radius: 5px;
 }
 
 .input_group

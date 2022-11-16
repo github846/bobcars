@@ -1,7 +1,7 @@
 import React from "react";
 import InvoiceItem from "./InvoiceItem";
 import api from "../../API/carleasing";
-import classes from "./InvoiceList.module.css";
+import classes from "../Layout/MyList.module.css";
 
 function InvoiceList(props)
 {
@@ -22,7 +22,7 @@ function InvoiceList(props)
         <div> 
             {props.invoices.map((invoice) => {
                 return (
-                    <InvoiceItem className={classes.invoices_container} key="{invoice}" invoice={invoice} onDelete={deleteHandler}/>
+                    <InvoiceItem className={classes.my_container} key="{invoice}" invoice={invoice} onDelete={deleteHandler}/>
                 );
             })}
         </div>

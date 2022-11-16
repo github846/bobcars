@@ -1,7 +1,7 @@
 import React from "react";
 import OptionItem from "./OptionItem";
 import api from "../../API/carleasing";
-import classes from "./OptionList.module.css";
+import classes from "../Layout/MyList.module.css";
 
 function OptionList(props)
 {
@@ -22,7 +22,7 @@ function OptionList(props)
         <div> 
             {props.options.map((option) => {
                 return (
-                    <OptionItem className={classes.options_container} key="{option}" option={option} onDelete={deleteHandler}/>
+                    <OptionItem className={classes.my_container} key="{option}" option={option} onDelete={deleteHandler}/>
                 );
             })}
         </div>

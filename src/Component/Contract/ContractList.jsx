@@ -1,7 +1,7 @@
 import React from "react";
 import ContractItem from "./ContractItem";
 import api from "../../API/carleasing";
-import classes from "./ContractList.module.css";
+import classes from "../Layout/MyList.module.css";
 
 function ContractList(props)
 {
@@ -22,7 +22,7 @@ function ContractList(props)
         <div>
             {props.contracts.map((contract) => {
                 return (
-                <div className={classes.contract_container}>
+                <div className={classes.my_container}>
                     <ContractItem key="{contract}" contract={contract} onDelete={deleteHandler}/>
                 </div>
                 );

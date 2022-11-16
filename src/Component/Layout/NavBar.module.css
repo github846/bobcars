@@ -1,0 +1,40 @@
+.logo
+{
+    font-size: 2.5em;
+    background: #06d;
+    color: #fff;
+    padding: 2%;
+    width: 20%;
+    text-align: center;
+}
+
+.my_list
+{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+}
+
+.my_list li
+{
+    padding: 1%;
+}
+
+.container
+{   
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: #4df;
+    margin-bottom: 20px;
+}
+
+.my_header
+{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}

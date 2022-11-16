@@ -1,0 +1,10 @@
+.my_footer
+{
+    background: #06d;
+    color: #fff;
+    text-align: center;
+    position: fixed;
+    padding: 1%;
+    bottom: 0px;
+    width: 90%;
+}

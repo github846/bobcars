@@ -1,0 +1,23 @@
+table
+{
+    border: 1px solid #4df;
+    border-spacing: 0px;
+}
+
+thead
+{
+    color: #fff;
+    background: #06d;
+}
+
+th
+{
+    padding: 10px;
+}
+
+td
+{
+    padding: 5px;
+    text-align: center;
+    border-bottom: 1px solid #4df;
+}

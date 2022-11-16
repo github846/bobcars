@@ -1,0 +1,26 @@
+.my_dropdown
+{
+    color: #06d;
+    padding: 5%;
+    text-align: center;
+}
+
+.my_dropdown_container
+{
+    background: #4df;
+    position: relative;
+    top: 10px;
+    padding: 5%;
+}
+
+.my_dropdown_item
+{
+    color: #06d;
+    padding: 5%;
+    font-size: 1em;
+}
+
+.my_dropdown:hover
+{
+    color: #fff;
+}

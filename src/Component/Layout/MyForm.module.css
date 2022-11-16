@@ -1,0 +1,26 @@
+.submit_group input
+{
+    border-radius: 5px;
+    border: none;
+    background: #06D;
+    color: #fff;
+    padding: 5px;
+}
+
+.form_container
+{
+    padding: 2%;
+    background: #eee;
+    box-shadow: #888 2px 2px 2px;
+    width: 50%;
+}
+
+.input_group
+{
+    padding: 1%;
+}
+
+.radio_group
+{
+    display: inline;
+}

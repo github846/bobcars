@@ -1,0 +1,50 @@
+.card
+{
+    background: #eee;
+    border-radius: 10px;
+    box-shadow: #888 2px 2px 2px;
+    padding: 2%;
+    box-sizing: border-box;
+    display: inline;
+}
+
+.valid
+{
+    color: #4f8;
+}
+
+.invalid
+{
+    color: #f44;
+}
+
+button
+{
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    background: #06d;
+    border: none;
+}
+
+button:hover
+{
+    background: #4df;
+}
+
+.cta-icon
+{
+    color: #06d;
+}
+
+.cta-icon:hover
+{
+    background: #4df;
+}
+
+.cta
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

@@ -16,8 +16,8 @@ function SearchCar()
 
         <div>
           <h2>Trouver une voiture</h2>
-          <SearchCarForm setCar={findCar} />
-          {car && <CarItem car={car} />}
+            <SearchCarForm setCar={findCar} />
+            {car && <CarItem car={car} />}
         </div>
       );
 

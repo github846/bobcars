@@ -13,7 +13,7 @@ function ClientRow(props)
     };
 
     return(
-            <tr className="client-info">
+            <tr className={classes.client_info}>
                 <td>{props.client.fname}</td>
                 <td>{props.client.surname}</td>
                 <td>{props.client.address}</td>

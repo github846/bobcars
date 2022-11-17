@@ -66,41 +66,41 @@ function NewClientForm()
     return(
         <div className={classes.form_container}>
             <form onSubmit={submitHandler}>
-                <div className={classes['input_group']}>
+                <div className={classes.input_group}>
                     <label htmlFor="fname">Prénom</label>
                     <input type="text" name="fname" id="fname"
                      required ref={fNameInputRef} defaultValue={context.action === "editClient" ? client.fname : ""}/>
                 </div>
-                <div className={classes['input_group']}>
+                <div className={classes.input_group}>
                     <label htmlFor="surname">Nom</label>
                     <input type="text" name="surname" id="surname"
                      required ref={surnameInputRef} defaultValue={context.action === "editClient" ? client.surname : ""}/>
                 </div>
-                <div className={classes['input_group']}>
+                <div className={classes.input_group}>
                     <label htmlFor="address">Adresse</label>
                     <input type="text" name="address" id="address"
                      required ref={addressInputRef} defaultValue={context.action === "editClient" ? client.address : ""}/>
                 </div>
-                <div className={classes['input_group']}>
+                <div className={classes.input_group}>
                     <label htmlFor="dob">Date de naissance</label>
                     <input type="date" name="dob" id="dob" 
                     required ref={dobInputRef} defaultValue={context.action === "editClient" ? client.dob : ""}/>
                 </div>
-                <div className={classes['input_group']}>
+                <div className={classes.input_group}>
                     <label htmlFor="fidelity">Fidélité</label>
                     <input type="number" name="fidelity" id="fidelity" 
                     required ref={fidelityInputRef} defaultValue={context.action === "editClient" ? client.fidelity : ""}/>
                 </div>
-                <div className={classes["input_group"]}>
+                <div className={classes.input_group}>
                     <label htmlFor="contract">Contract</label>
                     <div className={classes.cta}>
                         <input type="date" name="contract" id="contract" value={context.contract ? context.contract.signDate : ""} required ref={contractInputRef} />
                         <Link to="/searchcontract">
-                            <button><FontAwesomeIcon icon={faMagnifyingGlass} className={classes["cta-icon"]}></FontAwesomeIcon> Find contract</button>
+                            <button><FontAwesomeIcon icon={faMagnifyingGlass} className={classes.cta_icon}></FontAwesomeIcon> Find contract</button>
                         </Link>
                     </div>
                 </div>
-                <div className={classes['submit_group']}>
+                <div className={classes.submit_group}>
                     <input type="submit" name="submit" id="submit" value="Confirm save" required />
                 </div>
             </form>

@@ -57,26 +57,26 @@ function NewOptionForm()
     return(
         <div>
             <form onSubmit={submitHandler} className={classes.form_container}>
-            <div className={classes['input_group']}>
-                    <label htmlFor="title">Nom</label>
+            <div className={classes.input_group}>
+                    <label htmlFor="title">Nom </label>
                     <input type="text" name="title" id="title" required 
                     ref={titleInputRef} defaultValue={context.action === "editOption" ? option.name : ""} />
                 </div>
-                <div className={classes['input_group']}>
-                    <label htmlFor="description">Description</label>
+                <div className={classes.input_group}>
+                    <label htmlFor="description">Description </label>
                     <input type="text" name="description" id="description" required 
                     ref={descriptionInputRef} defaultValue={context.action === "editOption" ? option.description : ""} />
                 </div>
-                <div className={classes["input_group"]}>
-                    <label htmlFor="car">Voiture</label>
+                <div className={classes.input_group}>
+                    <label htmlFor="car">Voiture </label>
                     <div className={classes.cta}>
                         <input type="text" name="car" id="car" value={context.car ? context.car.id : ""} required ref={carInputRef} />
                         <Link to="/searchcar">
-                            <button><FontAwesomeIcon icon={faMagnifyingGlass} className={classes["cta-icon"]}></FontAwesomeIcon> Find car</button>
+                            <button><FontAwesomeIcon icon={faMagnifyingGlass} className={classes.cta_icon}></FontAwesomeIcon> Find car </button>
                         </Link>
                     </div>
                 </div>
-                <div className={classes['submit_group']}>
+                <div className={classes.submit_group}>
                     <input type="submit" name="submit" id="submit" value="Confirm save" required />
                 </div>
             </form>

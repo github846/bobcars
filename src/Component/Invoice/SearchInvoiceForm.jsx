@@ -31,13 +31,13 @@ function SearchCarForm(props)
     }
 
     return(
-        <div className={classes["form_container"]}>
+        <div className={classes.form_container}>
             <form onSubmit={submitHandler}>
-                <div className={classes['input_group']}>
+                <div className={classes.input_group}>
                     <label htmlFor="id">ID facture </label>
                     <input type="text" name="id" id="id" required ref={idInputRef}/>
                 </div>
-                <div className={classes['input_group']}>
+                <div className={classes.submit_group}>
                     <input type="submit" name="submit" id="submit" value="Search" required />
                 </div>
             </form>

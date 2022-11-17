@@ -60,31 +60,31 @@ function NewInvoiceForm()
     return(
         <div>
             <form onSubmit={submitHandler} className={classes.form_container}>
-            <div className={classes['input_group']}>
+            <div className={classes.input_group}>
                     <label htmlFor="paymentDate">Date de paiement</label>
                     <input type="date" name="paymentDate" id="paymentDate" required 
                     ref={paymentDateInputRef} defaultValue={context.action === "editInvoice" ? invoice.paymentDate : ""} />
                 </div>
-                <div className={classes['input_group']}>
+                <div className={classes.input_group}>
                     <label htmlFor="amount">Montant</label>
                     <input type="number" name="amount" id="amount" required 
                     ref={amountInputRef} defaultValue={context.action === "editInvoice" ? invoice.amount : ""} />
                 </div>
-                <div className={classes['input_group']}>
+                <div className={classes.input_group}>
                     <label htmlFor="address">Adresse</label>
                     <input type="text" name="address" id="address" 
                     ref={addressInputRef} defaultValue={invoice ? invoice.address : ""} required />
                 </div>
-                <div className={classes["input_group"]}>
+                <div className={classes.input_group}>
                     <label htmlFor="contract">Contrat</label>
                     <div className={classes.cta}>
                         <input type="date" name="contract" id="contract" value={context.contract ? context.contract.signDate : ""} required ref={contractInputRef} />
                         <Link to="/searchcontract">
-                            <button><FontAwesomeIcon icon={faMagnifyingGlass} className={classes["cta-icon"]}></FontAwesomeIcon> Find contract</button>
+                            <button><FontAwesomeIcon icon={faMagnifyingGlass} className={classes.cta_icon}></FontAwesomeIcon> Find contract</button>
                         </Link>
                     </div>
                 </div>
-                <div className={classes['submit_group']}>
+                <div className={classes.submit_group}>
                     <input type="submit" name="submit" id="submit" value="Confirm save" required />
                 </div>
             </form>

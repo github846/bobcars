@@ -18,10 +18,10 @@ function ContractItem(props)
 
     return(
         <div className={classes.card}>
-            <div className="image-container">
+            <div>
                 <img src="" />
             </div>
-            <div className="contract-info">
+            <div>
                 <p>Signature: {props.contract.signDate}</p>
                 <p>Début: {props.contract.contractStart}</p>
                 <p>Fin: {props.contract.contractEnd}</p>
@@ -31,18 +31,18 @@ function ContractItem(props)
                 <p>Lieu de restitution: {props.contract.returnPlace}</p>
             </div>
             <div className={classes.cta}>
-                <div className={classes["cta-item"]} onClick={() => props.onDelete(props.contract.id)}>
-                    <FontAwesomeIcon icon={faTrash} className={classes["cta-icon"]}></FontAwesomeIcon>
+                <div className={classes.cta_item} onClick={() => props.onDelete(props.contract.id)}>
+                    <FontAwesomeIcon icon={faTrash} className={classes.cta_icon}></FontAwesomeIcon> Delete
                 </div>
-                <div className={classes["cta-item"]}>
-                    <FontAwesomeIcon icon={faList} className={classes["cta-icon"]}></FontAwesomeIcon>
+                <div className={classes.cta_item}>
+                    <FontAwesomeIcon icon={faList} className={classes.cta_icon}></FontAwesomeIcon>
                 </div>
-                <div className={classes["cta-item"]}>
-                    <FontAwesomeIcon icon={faHouseMedical} className={classes["cta-icon"]}></FontAwesomeIcon>
+                <div className={classes.cta_item}>
+                    <FontAwesomeIcon icon={faHouseMedical} className={classes.cta_icon}></FontAwesomeIcon>
                 </div>
-                <div className={classes["cta-item"]} onClick={updateContract}>
+                <div className={classes.cta_item} onClick={updateContract}>
                     <Link to="/newcontract">
-                        <FontAwesomeIcon icon={faFilePen} className={classes["cta-icon"]}></FontAwesomeIcon>
+                        <FontAwesomeIcon icon={faFilePen} className={classes.cta_icon}></FontAwesomeIcon> Edit
                     </Link>
                 </div>
             </div>

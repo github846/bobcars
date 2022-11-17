@@ -12,16 +12,16 @@ function DropdownMenu(props)
 
     return (
         <div onClick={toggleActiveHandler}>    
-            <div className={classes["my_dropdown"]}>
+            <div className={classes.my_dropdown}>
                 {props.menu.title}
             </div>    
             {isActive &&
             (
-            <div className={classes["my_dropdown_container"]}>
+            <div className={classes.my_dropdown_container}>
                 {props.menu.items.map((menu) =>
                 {
                 return (
-                    <div className={classes["my_dropdown_item"]}>
+                    <div className={classes.my_dropdown_item}>
                         <Link to={menu.link}>{menu.title}</Link>
                     </div>
                     );

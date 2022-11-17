@@ -3,19 +3,24 @@ import OptionList from "../Component/Option/OptionList";
 import api from "../API/carleasing.js";
 import { useState, useEffect } from "react";
 
-function AllOptions() {
+function AllOptions()
+{
     const [options, setOptions] = useState([]);
 
-    useEffect(() => {
+    useEffect(() =>
+    {
         getOptions();
     }, []);
 
-    const getOptions = async () => {
-        try {
+    const getOptions = async () =>
+    {
+        try
+        {
             const result = await api.get("/options/");
             setOptions(result.data);
         }
-        catch (error) {
+        catch (error)
+        {
             console.log(error);
         }
     };

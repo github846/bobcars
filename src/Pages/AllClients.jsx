@@ -29,8 +29,9 @@ function AllClients()
     console.log(clientsAmount);
     
     return(
-        <div><h2>All clients</h2>
-        <ClientTable clients={clients} refresh={getClients} />
+        <div>
+            <h2>All clients</h2>
+            <ClientTable clients={clients} refresh={getClients} />
         </div>
     )
     

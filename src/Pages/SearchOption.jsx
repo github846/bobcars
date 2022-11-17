@@ -16,8 +16,8 @@ function SearchOption()
 
         <div>
           <h2>Trouver une option</h2>
-          <SearchOptionForm setOption={findOption} />
-          {option && <OptionItem option={option} />}
+            <SearchOptionForm setOption={findOption} />
+            {option && <OptionItem option={option} />}
         </div>
       );
 

@@ -28,26 +28,27 @@ function CarItem(props)
                 <p>Carburant: {props.car.fuel}</p>
                 <p>Puissance: {props.car.cylinder}</p>
                 <p>Vitesse maxi: {props.car.maxSpeed}</p>
-                <p>En cours d'utilisation: {props.car.inUse}</p>
                 <p>Kilométrage: {props.car.mileage}</p>
-                <p className={props.car.inUse ? classes["valid"] : classes["invalid"]}>
-                    {props.car.inUse ? "Available" : "Not available"}
+                <p className={props.car.inUse ? classes.valid : classes.invalid}>
+                {props.car.inUse ? "Available" : "Not available"}
                 </p>
-                 <p>{props.car.firstUse}</p>
+                <p>{props.car.firstUse}</p>
             </div>
             <div className={classes.cta}>
-                <div className={classes["cta-item"]} onClick={() => props.onDelete(props.car.id)}>
-                    <FontAwesomeIcon icon={faTrash} className={classes["cta-icon"]}></FontAwesomeIcon>
+                <div className={classes.cta_item} onClick={() => props.onDelete(props.car.id)}>
+                    <FontAwesomeIcon icon={faTrash} className={classes.cta_icon}></FontAwesomeIcon> Delete
                 </div>
-                <div className={classes["cta-item"]}>
-                    <FontAwesomeIcon icon={faList} className={classes["cta-icon"]}></FontAwesomeIcon>
+                <div className={classes.cta_item}>
+                <Link to="/contracts">
+                    <FontAwesomeIcon icon={faList} className={classes.cta_icon}>Contracts</FontAwesomeIcon>
+                </Link>
                 </div>
-                <div className={classes["cta-item"]}>
-                    <FontAwesomeIcon icon={faHouseMedical} className={classes["cta-icon"]}></FontAwesomeIcon>
+                <div className={classes.cta_item}>
+                    <FontAwesomeIcon icon={faHouseMedical} className={classes.cta_icon}></FontAwesomeIcon>
                 </div>
-                <div className={classes["cta-item"]} onClick={updateCar}>
+                <div className={classes.cta_item} onClick={updateCar}>
                     <Link to="/newcar">
-                        <FontAwesomeIcon icon={faFilePen} className={classes["cta-icon"]}></FontAwesomeIcon>
+                        <FontAwesomeIcon icon={faFilePen} className={classes.cta_icon}></FontAwesomeIcon> Edit
                     </Link>
                 </div>
             </div>

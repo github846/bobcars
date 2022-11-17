@@ -105,72 +105,72 @@ function NewContractForm()
     }
 
     return(
-        <div className={classes['form_container']}>
+        <div className={classes.form_container}>
             <form onSubmit={submitHandler}>
-                <div className={classes['input_group']}>
+                <div className={classes.input_group}>
                     <label htmlFor="signDate">Signature</label>
                     <input type="date" name="signDate" id="signDate" required ref={signDateInputRef} defaultValue={context.action === "editContract" ? contract.signDate : ""}
-                    className={dateError ? classes["red-border"] : ""} />
+                    className={dateError ? classes.invalid : ""} />
                 </div>
-                <div className={classes['input_group']}>
+                <div className={classes.input_group}>
                     <label htmlFor="contractStart">Début</label>
                     <input type="date" name="contractStart" id="contractStart" required ref={contractStartInputRef} defaultValue={context.action === "editContract" ? contract.signDate : ""}
-                    className={dateError ? classes["red-border"] : ""}/>
+                    className={dateError ? classes.invalid : ""}/>
                 </div>
-                <div className={classes['input_group']}>
+                <div className={classes.input_group}>
                     <label htmlFor="contractEnd">Fin</label>
                     <input type="date" name="contractEnd" id="contractEnd" required ref={contractEndInputRef} defaultValue={context.action === "editContract" ? contract.contractEnd : ""}
-                    className={dateError ? classes["red-border"] : ""}/>
+                    className={dateError ? classes.invalid : ""}/>
                 </div>
-                <div className={classes['input_group']}>
+                <div className={classes.input_group}>
                     <label htmlFor="totalPrice">Prix total</label>
                     <input type="number" name="totalPrice" id="totalPrice" required ref={totalPriceInputRef} defaultValue={context.action === "editContract" ? contract.totalPrice : ""}
-                    className={amountError ? classes["red-border"] : ""}/>
+                    className={amountError ? classes.invalid : ""}/>
                 </div>
-                <div className={classes['input_group']}>
+                <div className={classes.input_group}>
                     <label htmlFor="advance">Paiement en avance</label>
                     <input type="number" name="advance" id="advance" required ref={advanceInputRef} defaultValue={context.action === "editContract" ? contract.advance : ""}
-                    className={amountError ? classes["red-border"] : ""}/>
+                    className={amountError ? classes.invalid : ""}/>
                 </div>
-                <div className={classes['input_group']}>
+                <div className={classes.input_group}>
                     <label htmlFor="remainder">Reste à payer</label>
                     <input type="number" name="remainder" id="remainder" required ref={remainderInputRef} defaultValue={context.action === "editContract" ? contract.remainder : ""}
-                    className={amountError ? classes["red-border"] : ""}/>
+                    className={amountError ? classes.invalid : ""}/>
                 </div>
-                <div className={classes['input_group']}>
+                <div className={classes.input_group}>
                     <label htmlFor="returnPlace">Lieu de restitution</label>
                     <input type="text" name="returnPlace" id="returnPlace" required ref={returnPlaceInputRef} defaultValue={context.action === "editContract" ? contract.returnPlace : ""}/>
                 </div>
-                <div className={classes["input_group"]}>
+                <div className={classes.input_group}>
                     <label htmlFor="car">Facture</label>
                     <div className={classes.cta}>
                         <input type="text" name="invoice" id="invoice" value={context.invoice ? context.invoice.id : ""} required ref={invoiceInputRef} />
                         <Link to="/searchinvoice">
-                            <button><FontAwesomeIcon icon={faMagnifyingGlass} className={classes["cta-icon"]}></FontAwesomeIcon> Find invoice</button>
+                            <button><FontAwesomeIcon icon={faMagnifyingGlass} className={classes.cta_icon}></FontAwesomeIcon> Find invoice</button>
                         </Link>
                     </div>
                 </div>
-                <div className={classes["input_group"]}>
+                <div className={classes.input_group}>
                     <label htmlFor="car">Voiture</label>
                     <div className={classes.cta}>
                         <input type="text" name="car" id="car" value={context.car ? context.car.id : ""} required ref={carInputRef} />
                         <Link to="/searchcar">
-                            <button><FontAwesomeIcon icon={faMagnifyingGlass} className={classes["cta-icon"]}></FontAwesomeIcon> Find car</button>
+                            <button><FontAwesomeIcon icon={faMagnifyingGlass} className={classes.cta_icon}></FontAwesomeIcon> Find car</button>
                         </Link>
                     </div>
                 </div>
-                <div className={classes["input_group"]}>
+                <div className={classes.input_group}>
                     <label htmlFor="client">Client</label>
                     <input type="text" name="client" id="client" required value={context.client ? context.client.id : ""} ref={clientInputRef}/>
                     Prénom: <input type="text" name="fname" id="fname" required value={context.client ? context.client.fname + " " + context.client.surname: ""}/>
                     Date de naissance: <input type="date" name="client-dob" id="client-dob" required value={context.client ? context.client.dob : ""}/>
                 </div>
                 <div className={classes.cta}>
-                    <Link to="/searchclient" className={classes["cta-item"]}>
-                    <button><FontAwesomeIcon icon={faMagnifyingGlass} className={classes["cta-icon"]}></FontAwesomeIcon> Find client</button>
+                    <Link to="/searchclient" className={classes.cta_item}>
+                    <button><FontAwesomeIcon icon={faMagnifyingGlass} className={classes.cta_icon}></FontAwesomeIcon> Find client</button>
                     </Link>
                 </div>
-                <div className={classes['submit_group']}>
+                <div className={classes.submit_group}>
                     <input type="submit" name="submit" id="submit" value="Confirm save" required />
                 </div>
             </form>

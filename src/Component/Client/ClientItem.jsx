@@ -5,7 +5,7 @@ function ClientItem(props)
 {
     return (
             
-            <div className="client-info">
+            <div className={classes.client_info}>
                 <h3>Client found!</h3>
                 <p>Prénom: {props.client.fname}</p>
                 <p>Nom: {props.client.surname}</p>

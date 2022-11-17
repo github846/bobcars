@@ -26,8 +26,9 @@ function AllContracts()
     };
     
     return(
-        <div><h2>All contracts</h2>
-        <ContractList contracts={contracts} refresh={getContracts} />
+        <div>
+            <h2>All contracts</h2>
+            <ContractList contracts={contracts} refresh={getContracts} />
         </div>
     )
     

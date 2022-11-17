@@ -6,15 +6,15 @@ import classes from "../Layout/MyForm.module.css";
 function SearchContractForm(props)
 {
     const context = useContext(MainContext);
-    const idInputRef = useRef("");
+    const signDateInputRef = useRef("");
     const submitHandler = async(event) =>
     {
         event.preventDefault();
-        const idValue = idInputRef.current.value;
+        const signDateValue = signDateInputRef.current.value;
 
         try
         {
-            const response = await api.get("contracts/" + idValue);
+            const response = await api.get("contracts/" + signDateValue);
             if(response.data)
             {
                 props.setContract(response.data);
@@ -31,13 +31,13 @@ function SearchContractForm(props)
     }
 
     return(
-        <div className={classes["form_container"]}>
+        <div className={classes.form_container}>
             <form onSubmit={submitHandler}>
-                <div className={classes['input_group']}>
-                    <label htmlFor="id">ID contrat </label>
-                    <input type="text" name="id" id="id" required ref={idInputRef}/>
+                <div className={classes.input_group}>
+                    <label htmlFor="signDate">ID contrat </label>
+                    <input type="date" name="signDate" id="signDate" required ref={signDateInputRef}/>
                 </div>
-                <div className={classes['input_group']}>
+                <div className={classes.submit_group}>
                     <input type="submit" name="submit" id="submit" value="Search" required />
                 </div>
             </form>

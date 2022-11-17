@@ -27,18 +27,18 @@ function InvoiceItem(props)
                 <p>Adresse: {props.invoice.address}</p>
             </div>
             <div className={classes.cta}>
-                <div className={classes["cta-item"]} onClick={() => props.onDelete(props.invoice.id)}>
-                    <FontAwesomeIcon icon={faTrash} className={classes["cta-icon"]}></FontAwesomeIcon>
+                <div className={classes.cta_item} onClick={() => props.onDelete(props.invoice.id)}>
+                    <FontAwesomeIcon icon={faTrash} className={classes.cta_icon}></FontAwesomeIcon> Delete
                 </div>
-                <div className={classes["cta-item"]}>
-                    <FontAwesomeIcon icon={faList} className={classes["cta-icon"]}></FontAwesomeIcon>
+                <div className={classes.cta_item}>
+                    <FontAwesomeIcon icon={faList} className={classes.cta_icon}></FontAwesomeIcon>
                 </div>
-                <div className={classes["cta-item"]}>
-                    <FontAwesomeIcon icon={faHouseMedical} className={classes["cta-icon"]}></FontAwesomeIcon>
+                <div className={classes.cta_item}>
+                    <FontAwesomeIcon icon={faHouseMedical} className={classes.cta_icon}></FontAwesomeIcon>
                 </div>
-                <div className={classes["cta-item"]} onClick={updateInvoice}>
+                <div className={classes.cta_item} onClick={updateInvoice}>
                     <Link to="/newinvoice">
-                        <FontAwesomeIcon icon={faFilePen} className={classes["cta-icon"]}></FontAwesomeIcon>
+                        <FontAwesomeIcon icon={faFilePen} className={classes.cta_icon}></FontAwesomeIcon> Edit
                     </Link>
                 </div>
             </div>

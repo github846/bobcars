@@ -16,8 +16,8 @@ function SearchClient()
 
         <div>
           <h2>Trouver un client</h2>
-          <SearchClientForm setClient={findClient} />
-          {client && <ClientItem client={client} />}
+            <SearchClientForm setClient={findClient} />
+            {client && <ClientItem client={client} />}
         </div>
       );
 

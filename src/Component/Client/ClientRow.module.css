@@ -1,10 +1,10 @@
-.image-container
+.image_container
 {
     width: 200px;
     height: 200px;
 }
 
-.client-info
+.client_info
 {
     padding: 2%;
 }

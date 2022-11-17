@@ -16,8 +16,8 @@ function SearchInvoice()
 
         <div>
           <h2>Trouver une facture</h2>
-          <SearchInvoiceForm setInvoice={findInvoice} />
-          {invoice && <InvoiceItem invoice={invoice} />}
+            <SearchInvoiceForm setInvoice={findInvoice} />
+            {invoice && <InvoiceItem invoice={invoice} />}
         </div>
       );
 

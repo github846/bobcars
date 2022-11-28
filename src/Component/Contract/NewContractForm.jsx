@@ -4,7 +4,7 @@ import api from "../../API/carleasing";
 import { Link, useNavigate } from "react-router-dom";
 import MainContext from "../../Store/Main";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, } from "@fortawesome/free-solid-svg-icons";
 
 function NewContractForm()
 {
@@ -46,14 +46,16 @@ function NewContractForm()
             contractEnd: contractEndValue,
             totalPrice: totalPriceValue,
             advance: advanceValue,
-            remainder: remainderValue,
+            remainder: totalPriceValue - advanceValue,
             returnPlace: returnPlaceValue,
             car: {id: carValue},
             client: {id: clientValue},
             invoice: {id: invoiceValue}
         };
-
-        if(contractStartValue > contractEndValue || contractEndValue < signDateValue || contractStartValue < signDateValue )
+        
+        if(contractStartValue > contractEndValue
+             || contractEndValue < signDateValue
+            || contractStartValue < signDateValue )
         {
             setDateError(true);
             return;
@@ -63,12 +65,11 @@ function NewContractForm()
             setDateError(false);
         }
 
-        const amountValidation = (totalPriceValue, remainderValue, advanceValue) =>
+        const amountValidation = (totalPriceValue, advanceValue) =>
         {
-            if (Number(totalPriceValue) !== Number(advanceValue) + Number(remainderValue))
+            if (Number(totalPriceValue) < Number(advanceValue))
             {
                 setAmountError(true);
-                console.log(amountError);
                 return;
             }
             else
@@ -77,8 +78,7 @@ function NewContractForm()
             }
         };
 
-        amountValidation(totalPriceValue, remainderValue, advanceValue);
-        console.log(newContract);
+        amountValidation(totalPriceValue, advanceValue);
 
         try
         {
@@ -124,18 +124,18 @@ function NewContractForm()
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="totalPrice">Prix total</label>
-                    <input type="number" name="totalPrice" id="totalPrice" required ref={totalPriceInputRef} defaultValue={context.action === "editContract" ? contract.totalPrice : ""}
+                    <input type="number" name="totalPrice" id="totalPrice" required ref={totalPriceInputRef} defaultValue={context.action === "editContract" ? contract.totalPrice : 0}
                     className={amountError ? classes.invalid : ""}/>
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="advance">Paiement en avance</label>
-                    <input type="number" name="advance" id="advance" required ref={advanceInputRef} defaultValue={context.action === "editContract" ? contract.advance : ""}
+                    <input type="number" name="advance" id="advance" required ref={advanceInputRef} defaultValue={context.action === "editContract" ? contract.advance : 0}
                     className={amountError ? classes.invalid : ""}/>
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="remainder">Reste à payer</label>
-                    <input type="number" name="remainder" id="remainder" required ref={remainderInputRef} defaultValue={context.action === "editContract" ? contract.remainder : ""}
-                    className={amountError ? classes.invalid : ""}/>
+                    <input type="number" name="remainder" id="remainder" readOnly ref={remainderInputRef} defaultValue={context.action === "editContract" ? contract.remainder : 0}
+                    />
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="returnPlace">Lieu de restitution</label>
@@ -144,7 +144,7 @@ function NewContractForm()
                 <div className={classes.input_group}>
                     <label htmlFor="car">Facture</label>
                     <div className={classes.cta}>
-                        <input type="text" name="invoice" id="invoice" value={context.invoice ? context.invoice.id : ""} required ref={invoiceInputRef} />
+                        <input type="text" name="invoice" id="invoice" value={context.invoice ? context.invoice.id : ""} ref={invoiceInputRef} />
                         <Link to="/searchinvoice">
                             <button><FontAwesomeIcon icon={faMagnifyingGlass} className={classes.cta_icon}></FontAwesomeIcon> Find invoice</button>
                         </Link>
@@ -153,7 +153,7 @@ function NewContractForm()
                 <div className={classes.input_group}>
                     <label htmlFor="car">Voiture</label>
                     <div className={classes.cta}>
-                        <input type="text" name="car" id="car" value={context.car ? context.car.id : ""} required ref={carInputRef} />
+                        <input type="text" name="car" id="car" value={context.car ? context.car.id : ""}  ref={carInputRef} />
                         <Link to="/searchcar">
                             <button><FontAwesomeIcon icon={faMagnifyingGlass} className={classes.cta_icon}></FontAwesomeIcon> Find car</button>
                         </Link>
@@ -161,17 +161,17 @@ function NewContractForm()
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="client">Client</label>
-                    <input type="text" name="client" id="client" required value={context.client ? context.client.id : ""} ref={clientInputRef}/>
-                    Prénom: <input type="text" name="fname" id="fname" required value={context.client ? context.client.fname + " " + context.client.surname: ""}/>
-                    Date de naissance: <input type="date" name="client-dob" id="client-dob" required value={context.client ? context.client.dob : ""}/>
+                    <input type="text" name="client" id="client"  value={context.client ? context.client.id : ""} ref={clientInputRef}/>
+                    Nom complet: <input type="text" name="fullname" id="fullname" value={context.client ? context.client.fname + " " + context.client.surname: ""}/>
+                    Date de naissance: <input type="date" name="dob" id="dob"  value={context.client ? context.client.dob : ""}/>
                 </div>
                 <div className={classes.cta}>
-                    <Link to="/searchclient" className={classes.cta_item}>
-                    <button><FontAwesomeIcon icon={faMagnifyingGlass} className={classes.cta_icon}></FontAwesomeIcon> Find client</button>
+                    <Link to="/searchclient">
+                        <button><FontAwesomeIcon icon={faMagnifyingGlass} className={classes.cta_icon}></FontAwesomeIcon> Find client</button>
                     </Link>
                 </div>
                 <div className={classes.submit_group}>
-                    <input type="submit" name="submit" id="submit" value="Confirm save" required />
+                    <input type="submit" name="submit" id="submit" value="Confirm save" />
                 </div>
             </form>
         </div>

@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom"; // for redirects
 import MainContext from "../../Store/Main";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import MyModal from "../Layout/MyModal";
 
 function NewCarForm()
 {
@@ -19,9 +20,10 @@ function NewCarForm()
     const maxSpeedInputRef = useRef('');
     const mileageInputRef = useRef('');
     const firstUseInputRef = useRef('');
-    const [inUse, setInUse] = useState(false);
     const optionInputRef = useRef('');
     const contractInputRef = useRef('');
+    const [inUse, setInUse] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
 
     const submitHandler = async(e) =>
     {
@@ -78,6 +80,7 @@ function NewCarForm()
 
     return(
         <div>
+            {openModal && <MyModal closeModal={setOpenModal} />}
             <form onSubmit={submitHandler} className={classes.form_container}>
             <div className={classes.input_group}>
                     <label htmlFor="registration">Matricule</label>
@@ -101,7 +104,7 @@ function NewCarForm()
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="cylinder">Puissance</label>
-                    <input type="text" name="cylinder" id="cylinder" step="0.1"
+                    <input type="number" name="cylinder" id="cylinder" step="0.1"
                      ref={cylinderInputRef} defaultValue={car ? car.cylinder : ""} required />
                 </div>
                 <div className={classes.input_group}>
@@ -111,16 +114,7 @@ function NewCarForm()
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="inUse">En service</label>
-                    <div className={classes.radio_group}>
-                        <div className={classes.radio_item}>
-                            <input type="radio" name="inUse" checked={car ? car.inUse : inUse === true} onChange={(e) => {setInUse(true);}}/>
-                            <label>Oui</label>
-                        </div>
-                        <div className={classes.radio_item}>
-                            <input type="radio" name="inUse" checked={car ? car.inUse : inUse === true} onChange={(e) => {setInUse(false);}}/>
-                            <label>Non</label>
-                        </div>
-                    </div>
+                    <input type="checkbox" name="checkbox" id="checkbox" defaultValue={car ? car.inUse : inUse === false} onClick={() => {setInUse(!inUse);}}/>
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="mileage">Kilométrage</label>
@@ -132,19 +126,13 @@ function NewCarForm()
                     <input type="date" name="firstUse" id="firstUse" 
                     ref={firstUseInputRef} defaultValue={car ? car.firstUse : ""} required />
                 </div>
-                <div className={classes.input_group}>
-                    <label htmlFor="contract">Contract</label>
-                    <div className={classes.cta}>
-                        <input type="date" name="contract" id="contract" value={context.contract ? context.contract.signDate : ""} required ref={contractInputRef} />
-                        <Link to="/searchcontract">
-                            <button><FontAwesomeIcon icon={faMagnifyingGlass} className={classes.cta_icon}></FontAwesomeIcon> Find contract</button>
-                        </Link>
-                    </div>
-                </div>
+                <button className="openModalBtn" onClick={() => {setOpenModal(true);}}>
+                    Test
+                </button>
                 <div className={classes.input_group}>
                     <label htmlFor="option">Option</label>
                     <div className={classes.cta}>
-                        <input type="text" name="option" id="option" value={context.option ? context.option.id : ""} required ref={optionInputRef} />
+                        <input type="text" name="option" id="option" value={context.option ? context.option.id : ""} ref={optionInputRef} />
                         <Link to="/searchoption">
                             <button><FontAwesomeIcon icon={faMagnifyingGlass} className={classes.cta_icon}></FontAwesomeIcon> Find option</button>
                         </Link>
@@ -154,7 +142,7 @@ function NewCarForm()
                     <input type="submit" name="submit" id="submit" value="Confirm save" required />
                 </div>
             </form>
-        </div>
+        </div>   
     )
 }
 

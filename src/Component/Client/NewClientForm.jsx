@@ -1,10 +1,8 @@
 import React, { useContext, useRef } from "react";
 import classes from "../Layout/MyForm.module.css";
 import api from "../../API/carleasing";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import MainContext from "../../Store/Main";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 function NewClientForm()
 {
@@ -90,15 +88,6 @@ function NewClientForm()
                     <label htmlFor="fidelity">Fidélité</label>
                     <input type="number" name="fidelity" id="fidelity" 
                     required ref={fidelityInputRef} defaultValue={context.action === "editClient" ? client.fidelity : ""}/>
-                </div>
-                <div className={classes.input_group}>
-                    <label htmlFor="contract">Contract</label>
-                    <div className={classes.cta}>
-                        <input type="date" name="contract" id="contract" value={context.contract ? context.contract.signDate : ""} required ref={contractInputRef} />
-                        <Link to="/searchcontract">
-                            <button><FontAwesomeIcon icon={faMagnifyingGlass} className={classes.cta_icon}></FontAwesomeIcon> Find contract</button>
-                        </Link>
-                    </div>
                 </div>
                 <div className={classes.submit_group}>
                     <input type="submit" name="submit" id="submit" value="Confirm save" required />

@@ -11,10 +11,11 @@ function SearchContractForm(props)
     {
         event.preventDefault();
         const signDateValue = signDateInputRef.current.value;
+        // const signDateJSON = {signDate:signDateValue};
 
         try
         {
-            const response = await api.get("contracts/" + signDateValue);
+            const response = await api.get("contracts/signDate/" + signDateValue/*signDateJSON.toString()*/);
             if(response.data)
             {
                 props.setContract(response.data);

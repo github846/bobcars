@@ -31,7 +31,18 @@ button
     padding: 1%;
 }
 
+.invalid
+{
+    border: #f44 1px solid;
+    color: #f44;
+}
+
 .radio_group
 {
-    display: inline;
+    display: flex;
+}
+
+.radio_item
+{
+    padding: 1%;
 }

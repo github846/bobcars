@@ -24,7 +24,6 @@ function InvoiceItem(props)
             <div>
                 <p>Date de paiement: {props.invoice.paymentDate}</p>
                 <p>Montant: {props.invoice.amount}</p>
-                <p>Adresse: {props.invoice.address}</p>
             </div>
             <div className={classes.cta}>
                 <div className={classes.cta_item} onClick={() => props.onDelete(props.invoice.id)}>

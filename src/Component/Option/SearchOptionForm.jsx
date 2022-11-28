@@ -6,15 +6,17 @@ import classes from "../Layout/MyForm.module.css";
 function SearchCarForm(props)
 {
     const context = useContext(MainContext);
-    const idInputRef = useRef("");
+    //const idInputRef = useRef("");
+    const titleInputRef = useRef("");
     const submitHandler = async(event) =>
     {
         event.preventDefault();
-        const idValue = idInputRef.current.value;
+        //const idValue = idInputRef.current.value;
+        const titleValue = titleInputRef.current.value;
 
         try
         {
-            const response = await api.get("options/" + idValue);
+            const response = await api.get("options/title=" + /*idValue*/titleValue);
             if(response.data)
             {
                 props.setOption(response.data);
@@ -34,8 +36,8 @@ function SearchCarForm(props)
         <div className={classes.form_container}>
             <form onSubmit={submitHandler}>
                 <div className={classes.input_group}>
-                    <label htmlFor="id">ID facture </label>
-                    <input type="text" name="id" id="id" required ref={idInputRef}/>
+                    <label htmlFor="id">ID option </label>
+                    <input type="text" name="id" id="id" required ref={/*idInputRef*/titleInputRef}/>
                 </div>
                 <div className={classes.submit_group}>
                     <input type="submit" name="submit" id="submit" value="Search" required />

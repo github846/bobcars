@@ -1,0 +1,11 @@
+.modal_background
+{
+    background: rgba(0,0,0,0.2);
+}
+
+.modal_container
+{
+    margin: auto;
+    width: 50%;
+    position: auto;
+}

@@ -14,8 +14,6 @@ function CarItem(props)
         context.setAction("editCar");
     };
 
-    console.log(props.car);
-
     return(
         <div className={classes.card}>
             <div>

@@ -2,6 +2,7 @@ import React from "react";
 import InvoiceList from "../Component/Invoice/InvoiceList";
 import api from "../API/carleasing.js";
 import { useState, useEffect } from "react";
+import classes from "../Component/Layout/MyList.module.css"
 
 function AllInvoices()
 {
@@ -28,7 +29,7 @@ function AllInvoices()
     return (
         <div>
             <h2>All invoices</h2>
-            <InvoiceList invoices={invoices} refresh={getInvoices} />
+            <InvoiceList className={classes.my_container} invoices={invoices} refresh={getInvoices} />
         </div>
     )
 

@@ -28,7 +28,9 @@ function Home()
     console.log(clientsAmount);
 
     return(
-        <div>home</div>
+        <div>
+            home
+        </div>
     )
     
 }

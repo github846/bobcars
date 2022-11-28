@@ -71,11 +71,6 @@ function NewInvoiceForm()
                     ref={amountInputRef} defaultValue={context.action === "editInvoice" ? invoice.amount : ""} />
                 </div>
                 <div className={classes.input_group}>
-                    <label htmlFor="address">Adresse</label>
-                    <input type="text" name="address" id="address" 
-                    ref={addressInputRef} defaultValue={invoice ? invoice.address : ""} required />
-                </div>
-                <div className={classes.input_group}>
                     <label htmlFor="contract">Contrat</label>
                     <div className={classes.cta}>
                         <input type="date" name="contract" id="contract" value={context.contract ? context.contract.signDate : ""} required ref={contractInputRef} />

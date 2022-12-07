@@ -5,15 +5,17 @@ const MainContext = createContext( // global variables
         client: null,
         car: null,
         contract: null,
-        invoice: null,
+        //invoice: null,
         option: null,
         action: "",
+        loggedIn: false,
         setClient: () => {},
         setCar: () => {},
         setContract: () => {},
-        setInvoice: () => {},
+        //setInvoice: () => {},
         setOption: () => {},
-        setAction: () => {}
+        setAction: () => {},
+        setLoggedIn: () => {}
     }
 );
 
@@ -22,9 +24,10 @@ export function MainContextProvider(props) // works like props but scope is glob
     const [client, setClient] = useState();
     const [car, setCar] = useState();
     const [contract, setContract] = useState();
-    const [invoice, setInvoice] = useState();
+    //const [invoice, setInvoice] = useState();
     const [option, setOption] = useState();
     const [action, setAction] = useState();
+    const [loggedIn, setLoggedIn] = useState();
 
     const context =
     {
@@ -46,11 +49,11 @@ export function MainContextProvider(props) // works like props but scope is glob
             setContract(contract);
         },
 
-        invoice: invoice,
+        /*invoice: invoice,
         setInvoice: (invoice) =>
         {
             setInvoice(invoice);
-        },
+        },*/
 
         option: option,
         setOption: (option) =>
@@ -62,6 +65,12 @@ export function MainContextProvider(props) // works like props but scope is glob
         setAction: (action) =>
         {
             setAction(action);
+        },
+
+        loggedIn: loggedIn,
+        setLoggedIn: (loggedIn) =>
+        {
+            setLoggedIn(loggedIn);
         }
     };
 

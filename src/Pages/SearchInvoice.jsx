@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import SearchInvoiceForm from "../Component/Invoice/SearchInvoiceForm";
 import InvoiceItem from "../Component/Invoice/InvoiceItem";
 import { useState } from "react";
@@ -15,11 +15,11 @@ function SearchInvoice()
     return (
 
         <div>
-          <h2>Trouver une facture</h2>
+          <h2>Chercher une facture</h2>
             <SearchInvoiceForm setInvoice={findInvoice} />
             {invoice && <InvoiceItem invoice={invoice} />}
         </div>
       );
 
 }
-export default SearchInvoice;
+export default SearchInvoice*/

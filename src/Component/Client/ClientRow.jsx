@@ -18,7 +18,7 @@ function ClientRow(props)
                 <td>{props.client.surname}</td>
                 <td>{props.client.address}</td>
                 <td>{props.client.dob}</td>
-                <td>{props.client.fidelity}</td>
+                <td></td>
                 <td><button onClick={() => props.onDelete(props.client.id)}>Delete</button></td>
                 <td>
                     <Link to="/newclient">

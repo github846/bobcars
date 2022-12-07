@@ -19,11 +19,11 @@ function ContractList(props)
     };
 
     return (
-        <div>
+        <div className={classes.my_container}>
             {props.contracts.map((contract) => {
                 return (
-                <div className={classes.my_container}>
-                    <ContractItem key="{contract}" contract={contract} onDelete={deleteHandler}/>
+                <div>
+                    <ContractItem key={contract.id} contract={contract} onDelete={deleteHandler}/>
                 </div>
                 );
             })}

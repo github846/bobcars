@@ -25,19 +25,19 @@ function OptionItem(props)
                 <p>Nom: {props.option.title}</p>
                 <p>Description: {props.option.description}</p>
             </div>
-            <div className={classes.cta}>
-                <div className={classes.cta_item} onClick={() => props.onDelete(props.option.id)}>
-                    <FontAwesomeIcon icon={faTrash} className={classes.cta_icon}></FontAwesomeIcon> Delete
+            <div className={classes.actions}>
+                <div className={classes.actions_item} onClick={() => props.onDelete(props.option.id)}>
+                    <FontAwesomeIcon icon={faTrash} className={classes.actions_icon}></FontAwesomeIcon> Delete
                 </div>
-                <div className={classes.cta_item}>
-                    <FontAwesomeIcon icon={faList} className={classes.cta_icon}></FontAwesomeIcon>
+                <div className={classes.actions_item}>
+                    <FontAwesomeIcon icon={faList} className={classes.actions_icon}></FontAwesomeIcon>
                 </div>
-                <div className={classes.cta_item}>
-                    <FontAwesomeIcon icon={faHouseMedical} className={classes.cta_icon}></FontAwesomeIcon>
+                <div className={classes.actions_item}>
+                    <FontAwesomeIcon icon={faHouseMedical} className={classes.actions_icon}></FontAwesomeIcon>
                 </div>
-                <div className={classes.cta_item} onClick={updateOption}>
+                <div className={classes.actions_item} onClick={updateOption}>
                     <Link to="/newoption">
-                        <FontAwesomeIcon icon={faFilePen} className={classes.cta_icon}></FontAwesomeIcon> Edit
+                        <FontAwesomeIcon icon={faFilePen} className={classes.actions_icon}></FontAwesomeIcon> Edit
                     </Link>
                 </div>
             </div>

@@ -10,11 +10,11 @@ function NewClientForm()
     const surnameInputRef = useRef('');
     const addressInputRef = useRef('');
     const dobInputRef = useRef('');
-    const fidelityInputRef = useRef('');
+    // const fidelityInputRef = useRef('');
     let navigate = useNavigate();
     const context = useContext(MainContext);
     const client = context.client;
-    const contractInputRef = useRef('');
+    // const contractInputRef = useRef('');
 
     const submitHandler = async(e) =>
     {
@@ -24,8 +24,8 @@ function NewClientForm()
         const surnameValue = surnameInputRef.current.value;
         const addressValue = addressInputRef.current.value;
         const dobValue = dobInputRef.current.value;
-        const fidelityValue = fidelityInputRef.current.value;
-        const contractValue = contractInputRef.current.value;
+        /*const fidelityValue = fidelityInputRef.current.value;
+         const contractValue = contractInputRef.current.value;*/
 
         const newClient = 
         {
@@ -33,8 +33,8 @@ function NewClientForm()
             surname: surnameValue,
             address: addressValue,
             dob: dobValue,
-            fidelity: fidelityValue,
-            contract: {id: contractValue}
+            /* fidelity: fidelityValue,
+             contract: {id: contractValue}*/
         };
 
         try
@@ -83,12 +83,7 @@ function NewClientForm()
                     <label htmlFor="dob">Date de naissance</label>
                     <input type="date" name="dob" id="dob" 
                     required ref={dobInputRef} defaultValue={context.action === "editClient" ? client.dob : ""}/>
-                </div>
-                <div className={classes.input_group}>
-                    <label htmlFor="fidelity">Fidélité</label>
-                    <input type="number" name="fidelity" id="fidelity" 
-                    required ref={fidelityInputRef} defaultValue={context.action === "editClient" ? client.fidelity : ""}/>
-                </div>
+                </div>                
                 <div className={classes.submit_group}>
                     <input type="submit" name="submit" id="submit" value="Confirm save" required />
                 </div>
@@ -98,3 +93,9 @@ function NewClientForm()
 }
 
 export default NewClientForm;
+
+/*<div className={classes.input_group}>
+                    <label htmlFor="fidelity">Fidélité</label>
+                    <input type="number" name="fidelity" id="fidelity" 
+                    required ref={fidelityInputRef} defaultValue={context.action === "editClient" ? client.fidelity : ""}/>
+                </div>*/

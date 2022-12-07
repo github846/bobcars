@@ -32,6 +32,16 @@
     margin-bottom: 20px;
 }
 
+@media screen and (max-width: 500px)
+{
+    .my_header, .container
+    {   
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
 .my_header
 {
     display: flex;

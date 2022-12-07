@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import NewInvoiceForm from "../Component/Invoice/NewInvoiceForm";
 
 function NewInvoice()
@@ -11,4 +11,4 @@ function NewInvoice()
     )
 }
 
-export default NewInvoice;
+export default NewInvoice;*/

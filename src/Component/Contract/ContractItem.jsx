@@ -13,36 +13,41 @@ function ContractItem(props)
         context.setContract(props.contract);
         context.setAction("editContract");
     };
-
-    console.log(props.contract);
+    let n = new Date(props.contract.contractEnd);
+    let u = new Date(props.contract.contractStart);
+    let j = props.contract.dailyPrice;
+    n = n.getTime();
+    u = u.getTime();
+    let z = (n - u)/(86400000)+1;
+    let w = j*z
 
     return(
         <div className={classes.card}>
             <div>
-                <img src="" />
-            </div>
-            <div>
                 <p>Signature: {props.contract.signDate}</p>
                 <p>Début: {props.contract.contractStart}</p>
                 <p>Fin: {props.contract.contractEnd}</p>
-                <p>Prix total: {props.contract.totalPrice}</p>
-                <p>Avance: {props.contract.advance}</p>
-                <p>Reste à payer: {props.contract.remainder}</p>
-                <p>Lieu de restitution: {props.contract.returnPlace}</p>
+                <p>Prix journalier: {props.contract.dailyPrice}</p>
+                <p>Prix total: {w}</p>
+                {console.log(n)}
+                {console.log(u)}
+                {console.log(z)}
+                {console.log(j)}
+                {console.log(w)}
             </div>
-            <div className={classes.cta}>
-                <div className={classes.cta_item} onClick={() => props.onDelete(props.contract.id)}>
-                    <FontAwesomeIcon icon={faTrash} className={classes.cta_icon}></FontAwesomeIcon> Delete
+            <div className={classes.actions}>
+                <div className={classes.actions_item} onClick={() => props.onDelete(props.contract.id)}>
+                    <FontAwesomeIcon icon={faTrash} className={classes.actions_icon}></FontAwesomeIcon> Delete
                 </div>
-                <div className={classes.cta_item}>
-                    <FontAwesomeIcon icon={faList} className={classes.cta_icon}></FontAwesomeIcon>
+                <div className={classes.actions_item}>
+                    <FontAwesomeIcon icon={faList} className={classes.actions_icon}></FontAwesomeIcon>
                 </div>
-                <div className={classes.cta_item}>
-                    <FontAwesomeIcon icon={faHouseMedical} className={classes.cta_icon}></FontAwesomeIcon>
+                <div className={classes.actions_item}>
+                    <FontAwesomeIcon icon={faHouseMedical} className={classes.actions_icon}></FontAwesomeIcon>
                 </div>
-                <div className={classes.cta_item} onClick={updateContract}>
+                <div className={classes.actions_item} onClick={updateContract}>
                     <Link to="/newcontract">
-                        <FontAwesomeIcon icon={faFilePen} className={classes.cta_icon}></FontAwesomeIcon> Edit
+                        <FontAwesomeIcon icon={faFilePen} className={classes.actions_icon}></FontAwesomeIcon> Edit
                     </Link>
                 </div>
             </div>

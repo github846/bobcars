@@ -1,6 +1,7 @@
 import './index.css';
 import Navbar from './Component/Layout/NavBar';
 import Footer from './Component/Layout/Footer';
+import MainContext from './Store/Main';
 import { Routes, Route } from "react-router-dom";
 import Home from './Pages/Home';
 import NewCar from './Pages/NewCar';
@@ -12,21 +13,24 @@ import AllClients from './Pages/AllClients';
 import NewContract from './Pages/NewContract';
 import SearchContract from './Pages/SearchContract';
 import AllContracts from './Pages/AllContracts';
-import NewInvoice from './Pages/NewInvoice';
-import SearchInvoice from './Pages/SearchInvoice';
-import AllInvoices from './Pages/AllInvoices';
+// import NewInvoice from './Pages/NewInvoice';
+// import SearchInvoice from './Pages/SearchInvoice';
+// import AllInvoices from './Pages/AllInvoices';
 import NewOption from './Pages/NewOption';
 import SearchOption from './Pages/SearchOption';
 import AllOptions from './Pages/AllOptions';
 import About from './Pages/About';
 import Error404 from './Pages/Error404';
+import Login from './Pages/Login';
+import { useContext } from 'react';
 
 function App() {
-  return (
-    <div class="my_body">
-      <Navbar />
+    const context = useContext(MainContext);
+    return <div className="my_body">
+    {context.loggedIn && <Navbar />}
       <Routes>
-        <Route path='/' element={<Home />}></Route>
+      <Route path='/' element={<Login />}></Route>
+        <Route path='/home' element={<Home />}></Route>
         <Route path='/cars' element={<AllCars />}></Route>
         <Route path='/newcar' element={<NewCar />}></Route>
         <Route path='/searchcar' element={<SearchCar />}></Route>
@@ -36,19 +40,19 @@ function App() {
         <Route path='/contracts' element={<AllContracts />}></Route>
         <Route path='/newcontract' element={<NewContract />}></Route>
         <Route path='/searchcontract' element={<SearchContract />}></Route>
-        <Route path='/invoices' element={<AllInvoices />}></Route>
-        <Route path='/newinvoice' element={<NewInvoice />}></Route>
-        <Route path='/searchinvoice' element={<SearchInvoice />}></Route>
+        
         <Route path='/options' element={<AllOptions />}></Route>
         <Route path='/newoption' element={<NewOption />}></Route>
         <Route path='/searchoption' element={<SearchOption />}></Route>
         <Route path='/about' element={<About />}></Route>
         <Route path='*' element={<Error404 />}></Route>
       </Routes>
-      <Footer />
-    </div>
-    
-  );
+    <Footer />
+  </div>;
 }
+
+/*<Route path='/invoices' element={<AllInvoices />}></Route>
+    <Route path='/newinvoice' element={<NewInvoice />}></Route>
+    <Route path='/searchinvoice' element={<SearchInvoice />}></Route>*/
 
 export default App;

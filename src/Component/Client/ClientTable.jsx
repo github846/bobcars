@@ -3,7 +3,7 @@ import ClientRow from "./ClientRow";
 import classes from "./ClientTable.module.css";
 import api from "../../API/carleasing";
 
-function clientTable(props)
+function ClientTable(props)
 {
     const deleteHandler = async (id) =>
     {
@@ -44,4 +44,4 @@ function clientTable(props)
     )
 }
 
-export default clientTable;
+export default ClientTable;

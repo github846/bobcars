@@ -32,21 +32,21 @@ function CarItem(props)
                 </p>
                 <p>{props.car.firstUse}</p>
             </div>
-            <div className={classes.cta}>
-                <div className={classes.cta_item} onClick={() => props.onDelete(props.car.id)}>
-                    <FontAwesomeIcon icon={faTrash} className={classes.cta_icon}></FontAwesomeIcon> Delete
+            <div className={classes.actions}>
+                <div className={classes.actions_item} onClick={() => props.onDelete(props.car.id)}>
+                    <FontAwesomeIcon icon={faTrash} className={classes.actions_icon}></FontAwesomeIcon> Delete
                 </div>
-                <div className={classes.cta_item}>
+                <div className={classes.actions_item}>
                 <Link to="/contracts">
-                    <FontAwesomeIcon icon={faList} className={classes.cta_icon}>Contracts</FontAwesomeIcon>
+                    <FontAwesomeIcon icon={faList} className={classes.actions_icon}>Contracts</FontAwesomeIcon>
                 </Link>
                 </div>
-                <div className={classes.cta_item}>
-                    <FontAwesomeIcon icon={faHouseMedical} className={classes.cta_icon}></FontAwesomeIcon>
+                <div className={classes.actions_item}>
+                    <FontAwesomeIcon icon={faHouseMedical} className={classes.actions_icon}></FontAwesomeIcon>
                 </div>
-                <div className={classes.cta_item} onClick={updateCar}>
+                <div className={classes.actions_item} onClick={updateCar}>
                     <Link to="/newcar">
-                        <FontAwesomeIcon icon={faFilePen} className={classes.cta_icon}></FontAwesomeIcon> Edit
+                        <FontAwesomeIcon icon={faFilePen} className={classes.actions_icon}></FontAwesomeIcon> Edit
                     </Link>
                 </div>
             </div>

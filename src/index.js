@@ -6,11 +6,15 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { MainContextProvider } from './Store/Main';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <MainContextProvider>
-    <Router>
-      <App />
-    </Router>
-  </MainContextProvider>
-);
+          root.render(
+          <MainContextProvider>
+            <Router>
+              <App />
+            </Router>
+          </MainContextProvider>
+          );
+          
+
+
+
 

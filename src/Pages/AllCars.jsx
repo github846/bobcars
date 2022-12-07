@@ -2,7 +2,6 @@ import React from "react";
 import CarList from "../Component/Car/CarList";
 import api from "../API/carleasing.js";
 import { useState, useEffect } from "react";
-import classes from "../Component/Layout/MyList.module.css";
 
 function AllCars()
 {
@@ -28,9 +27,10 @@ function AllCars()
     };
 
     return (
-        <div >
-            <h2>All cars</h2>
-            <CarList className={classes.my_container} cars={cars} refresh={getCars} />
+        <div>
+            <h2>Voitures</h2>
+            <p>{cars.length} cars</p>
+            <CarList cars={cars} refresh={getCars} />
         </div>
     )
 

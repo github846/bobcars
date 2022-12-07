@@ -26,6 +26,17 @@ button
     border-radius: 5px;
 }
 
+.loginform_container
+{
+    padding: 2%;
+    background: #fdd;
+    box-shadow: #888 2px 2px 2px;
+    width: 50%;
+    border-radius: 5px;
+    margin-top: 20%;
+    margin-left: 25%;
+}
+
 .input_group
 {
     padding: 1%;

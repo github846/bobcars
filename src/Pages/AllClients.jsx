@@ -2,7 +2,6 @@ import React from "react";
 import ClientTable from "../Component/Client/ClientTable";
 import api from "../API/carleasing.js";
 import { useState, useEffect } from "react";
-import classes from "../Component/Layout/MyList.module.css"
 
 function AllClients()
 {
@@ -25,14 +24,11 @@ function AllClients()
             console.log(error);
         }
     };
-
-    let clientsAmount = getClients.length;
-    console.log(clientsAmount);
     
     return(
         <div>
-            <h2>All clients</h2>
-            <ClientTable className={classes.my_container} clients={clients} refresh={getClients} />
+            <h2>Clients</h2>
+            <ClientTable clients={clients} refresh={getClients} />
         </div>
     )
     

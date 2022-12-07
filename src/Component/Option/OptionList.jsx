@@ -19,10 +19,10 @@ function OptionList(props)
     };
 
     return (
-        <div> 
+        <div className={classes.my_container}> 
             {props.options.map((option) => {
                 return (
-                    <OptionItem className={classes.my_container} key="{option}" option={option} onDelete={deleteHandler}/>
+                    <OptionItem  key={option.id} option={option} onDelete={deleteHandler}/>
                 );
             })}
         </div>

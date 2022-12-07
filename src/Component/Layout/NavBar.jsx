@@ -1,10 +1,11 @@
 import classes from "./NavBar.module.css";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu";
 
 function Navbar()
 {
+
     const carMenu =
     {
         title: "Cars",
@@ -38,7 +39,7 @@ function Navbar()
         ]
     };
 
-    const invoiceMenu =
+    /*const invoiceMenu =
     {
         title: "Invoices",
         items:
@@ -47,7 +48,7 @@ function Navbar()
             {link: "/newinvoice", title: "New"},
             {link: "/searchinvoice", title: "Search"}
         ]
-    };
+    };*/
 
     const optionMenu =
     {
@@ -66,7 +67,7 @@ function Navbar()
                 <div className={classes.logo}>Bob's cars</div>
                 <ul className={classes.my_list}>
                     <li>
-                        <Link to="/">Home</Link>
+                        <Link to="/home">Home</Link>
                     </li>
                     <li>
                         <DropdownMenu menu={carMenu} />
@@ -76,9 +77,6 @@ function Navbar()
                     </li>
                     <li>
                         <DropdownMenu menu={contractMenu} />
-                    </li>
-                    <li>
-                        <DropdownMenu menu={invoiceMenu} />
                     </li>
                     <li>
                         <DropdownMenu menu={optionMenu} />
@@ -93,3 +91,7 @@ function Navbar()
 }
 
 export default Navbar;
+
+/*<li>
+    <DropdownMenu menu={invoiceMenu} />
+</li>*/

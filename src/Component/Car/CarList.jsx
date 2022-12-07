@@ -1,6 +1,7 @@
 import React from "react";
 import CarItem from "./CarItem";
 import api from "../../API/carleasing";
+import classes from '../Layout/MyList.module.css';
 
 function CarList(props)
 {
@@ -18,7 +19,7 @@ function CarList(props)
     };
 
     return (
-        <div> 
+        <div className={classes.my_container}> 
             {props.cars.map((car) => {
                 return (
                     <CarItem  key="{car}" car={car} onDelete={deleteHandler}/>

@@ -15,7 +15,7 @@ function SearchCar()
     return (
 
         <div>
-          <h2>Trouver une voiture</h2>
+          <h2>Chercher une voiture</h2>
             <SearchCarForm setCar={findCar} />
             {car && <CarItem car={car} />}
         </div>

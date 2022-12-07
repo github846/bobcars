@@ -1,11 +1,8 @@
-import React, { useContext, useState, useRef } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import classes from "../Layout/MyForm.module.css";
 import api from "../../API/carleasing";
-import { Link, useNavigate } from "react-router-dom"; // for redirects
+import { useNavigate } from "react-router-dom"; // for redirects
 import MainContext from "../../Store/Main";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import MyModal from "../Layout/MyModal";
 
 function NewCarForm()
 {
@@ -19,11 +16,30 @@ function NewCarForm()
     const cylinderInputRef = useRef('');
     const maxSpeedInputRef = useRef('');
     const mileageInputRef = useRef('');
+    const inUseInputRef = useRef(false);
     const firstUseInputRef = useRef('');
-    const optionInputRef = useRef('');
-    const contractInputRef = useRef('');
+    const optionInputRef = useRef([]);
+    // const contractInputRef = useRef('');
     const [inUse, setInUse] = useState(false);
-    const [openModal, setOpenModal] = useState(false);
+    const [optns, setOptns] = useState([]);
+
+    useEffect(() =>
+    {
+        getOptns();
+    }, []);
+
+    const getOptns = async () =>
+    {
+        try
+        {
+            const result = await api.get("/options/");
+            setOptns(result.data);
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
+    };
 
     const submitHandler = async(e) =>
     {
@@ -36,9 +52,10 @@ function NewCarForm()
         const cylinderValue = cylinderInputRef.current.value;
         const maxSpeedValue = maxSpeedInputRef.current.value;
         const mileageValue = mileageInputRef.current.value;
+        const inUseValue = inUseInputRef.current.value;
         const firstUseValue = firstUseInputRef.current.value;
         const optionValue = optionInputRef.current.value;
-        const contractValue = contractInputRef.current.value;
+        // const contractValue = contractInputRef.current.value;
         
         const newCar = // creating new object with input values
         {
@@ -49,9 +66,10 @@ function NewCarForm()
             cylinder: cylinderValue,
             maxSpeed: maxSpeedValue,
             mileage: mileageValue,
+            inUse: inUseValue,
             firstUse: firstUseValue,
-            option: {id: optionValue},
-            contract: {id: contractValue}
+            option: {title: optionValue}
+            // contract: {id: contractValue}
         };
 
         try
@@ -68,19 +86,19 @@ function NewCarForm()
                 response = await api.post("/cars/", newCar);
                 console.log(response);
             }
-            navigate("/cars"); // redirect to list
+            navigate("/cars/"); // redirect to list
             console.log(response);
             
         }
         catch(error)
         {
+            alert('nope');
             console.log(error);
         }
     }
 
     return(
         <div>
-            {openModal && <MyModal closeModal={setOpenModal} />}
             <form onSubmit={submitHandler} className={classes.form_container}>
             <div className={classes.input_group}>
                     <label htmlFor="registration">Matricule</label>
@@ -114,7 +132,7 @@ function NewCarForm()
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="inUse">En service</label>
-                    <input type="checkbox" name="checkbox" id="checkbox" defaultValue={car ? car.inUse : inUse === false} onClick={() => {setInUse(!inUse);}}/>
+                    <input type="checkbox" name="inUse" id="inUse" ref={inUseInputRef} defaultValue={car ? car.inUse : inUse === false} onClick={() => {setInUse(!inUse);}}/>
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="mileage">Kilométrage</label>
@@ -126,17 +144,13 @@ function NewCarForm()
                     <input type="date" name="firstUse" id="firstUse" 
                     ref={firstUseInputRef} defaultValue={car ? car.firstUse : ""} required />
                 </div>
-                <button className="openModalBtn" onClick={() => {setOpenModal(true);}}>
-                    Test
-                </button>
                 <div className={classes.input_group}>
-                    <label htmlFor="option">Option</label>
-                    <div className={classes.cta}>
-                        <input type="text" name="option" id="option" value={context.option ? context.option.id : ""} ref={optionInputRef} />
-                        <Link to="/searchoption">
-                            <button><FontAwesomeIcon icon={faMagnifyingGlass} className={classes.cta_icon}></FontAwesomeIcon> Find option</button>
-                        </Link>
-                    </div>
+                    <label htmlFor="carOption">Option </label>
+                <div ref={optionInputRef}>
+                    {optns.map((optn) => {
+                        return(<div>{optn.title}<input type="checkbox" /></div>)
+                    })}
+                </div>
                 </div>
                 <div className={classes.submit_group}>
                     <input type="submit" name="submit" id="submit" value="Confirm save" required />

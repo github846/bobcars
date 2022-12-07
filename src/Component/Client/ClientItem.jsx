@@ -10,9 +10,9 @@ function ClientItem(props)
                 <p>Prénom: {props.client.fname}</p>
                 <p>Nom: {props.client.surname}</p>
                 <p>Adresse: {props.client.address}</p>
-                <p>Date de naissance: {props.client.dob}</p>
-                <p>Fidélité: {props.client.fidelity}</p>
+                <p>Date de naissance: {props.client.dob}</p>   
             </div>
     );
 }
 export default ClientItem;
+// <p>Fidélité: {props.client.fidelity}</p>

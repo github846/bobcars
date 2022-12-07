@@ -10,7 +10,7 @@
 
 .valid
 {
-    color: #4f8;
+    color: #2d6;
 }
 
 .invalid
@@ -18,20 +18,19 @@
     color: #f44;
 }
 
-.cta_icon
+.actions_icon
 {
     color: #06d;
 }
 
-.cta_icon:hover
+.actions_icon:hover
 {
     background: #4df;
 }
 
-.cta
+.actions
 {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 25%;
 }

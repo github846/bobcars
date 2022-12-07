@@ -10,7 +10,12 @@
 .my_body
 {
   width: 90%;
-  margin-bottom: 50px;
+  margin: 50px;
+}
+
+.my_content
+{
+  width: 90%;
 }
 
 a

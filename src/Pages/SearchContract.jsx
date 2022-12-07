@@ -15,7 +15,7 @@ function SearchContract()
     return (
 
         <div>
-          <h2>Trouver un contrat</h2>
+          <h2>Chercher un contrat</h2>
             <SearchContractForm setContract={findContract} />
             {contract && <ContractItem contract={contract} />}
         </div>

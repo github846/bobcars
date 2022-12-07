@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import InvoiceList from "../Component/Invoice/InvoiceList";
 import api from "../API/carleasing.js";
 import { useState, useEffect } from "react";
@@ -34,4 +34,4 @@ function AllInvoices()
     )
 
 }
-export default AllInvoices;
+export default AllInvoices;*/

@@ -9,28 +9,21 @@ function NewContractForm()
     const context = useContext(MainContext);
     const contract = context.contract;
     const [dateError, setDateError] = useState(false);
-    // const [amountError, setAmountError] = useState(false);
     const signDateInputRef = useRef('');
     const contractStartInputRef = useRef('');
     const contractEndInputRef = useRef('');
     const dailyPriceInputRef = useRef('');
-    /*const advanceInputRef = useRef('');
-    const remainderInputRef = useRef('');
-    const returnPlaceInputRef = useRef('');*/
-    const carInputRef = useRef('');
-    const clientInputRef = useRef('');
-    // const invoiceInputRef = useRef('');
+    const carInputRef = useRef(0);
+    const clientInputRef = useRef(0);
     let navigate = useNavigate();
 
     const [clients, setClients] = useState([]);
     const [cars, setCars] = useState([]);
-    // const [invoices, setInvoices] = useState([]);
 
     useEffect(() =>
     {
         getClients();
         getCars();
-        // getInvoices();
     }, []);
 
     const getClients = async () =>
@@ -58,18 +51,6 @@ function NewContractForm()
         }
     };
 
-    /*const getInvoices = async () =>
-    {
-        try
-        {
-            const result = await api.get("/invoices/");
-            setInvoices(result.data);
-        }
-        catch(error)
-        {
-            console.log(error);
-        }
-    };*/
         
     const submitHandler = async(e) =>
     {
@@ -79,12 +60,8 @@ function NewContractForm()
         const contractStartValue = contractStartInputRef.current.value;
         const contractEndValue = contractEndInputRef.current.value;
         const dailyPriceValue = dailyPriceInputRef.current.value;
-        /*const advanceValue = advanceInputRef.current.value;
-        const remainderValue = remainderInputRef.current.value;
-        const returnPlaceValue = returnPlaceInputRef.current.value;*/
         const carValue = carInputRef.current.value;
         const clientValue = clientInputRef.current.value;
-        // const invoiceValue = invoiceInputRef.current.value;
 
         const newContract = 
         {
@@ -92,12 +69,8 @@ function NewContractForm()
             contractStart: contractStartValue,
             contractEnd: contractEndValue,
             dailyPrice: dailyPriceValue,
-            /*advance: advanceValue,
-            remainder: dailyPriceValue - advanceValue,
-            returnPlace: returnPlaceValue,*/
             car: {id: carValue},
             client: {id: clientValue}
-            // invoice: {paymentDate: invoiceValue}
         };
         
         if(contractStartValue > contractEndValue
@@ -111,22 +84,6 @@ function NewContractForm()
         {
             setDateError(false);
         }
-
-        /*const amountValidation = (dailyPriceValue, advanceValue) =>
-        {
-            if (Number(dailyPriceValue) < Number(advanceValue))
-            {
-                setAmountError(true);
-                return;
-            }
-            else
-            {
-                setAmountError(false);
-            }
-        };
-    }*/
-
-        // amountValidation(dailyPriceValue, advanceValue);
 
         try
         {
@@ -162,33 +119,32 @@ function NewContractForm()
                     className={dateError ? classes.invalid : ""} />
                 </div>
                 <div className={classes.input_group}>
-                    <label htmlFor="contractStart">Début</label>
+                    <label htmlFor="contractStart">Début </label>
                     <input type="date" name="contractStart" id="contractStart" required ref={contractStartInputRef} defaultValue={context.action === "editContract" ? contract.signDate : ""}
                     className={dateError ? classes.invalid : ""}/>
                 </div>
                 <div className={classes.input_group}>
-                    <label htmlFor="contractEnd">Fin</label>
+                    <label htmlFor="contractEnd">Fin </label>
                     <input type="date" name="contractEnd" id="contractEnd" required ref={contractEndInputRef} defaultValue={context.action === "editContract" ? contract.contractEnd : ""}
                     className={dateError ? classes.invalid : ""}/>
                 </div>
                 <div className={classes.input_group}>
-                    <label htmlFor="dailyPrice">Prix journalier</label>
-                    <input type="number" name="dailyPrice" id="dailyPrice" required ref={dailyPriceInputRef} defaultValue={context.action === "editContract" ? contract.dailyPrice : 0}
-                    /*className={amountError ? classes.invalid : ""}*//>
+                    <label htmlFor="dailyPrice">Prix journalier </label>
+                    <input type="number" name="dailyPrice" id="dailyPrice" required ref={dailyPriceInputRef} defaultValue={context.action === "editContract" ? contract.dailyPrice : 0}/>
                 </div>
                 <div className={classes.input_group}>
-                    <label htmlFor="contractClient">Client</label>
+                    <label htmlFor="contractClient">Client </label>
                     <select required>
                         {clients.map((client) => {
-                            return(<option ref={clientInputRef}>{client.fname}</option>)
+                            return(<option ref={clientInputRef} value={client.id}>{client.fname}</option>)
                         })}
                     </select>
                 </div>
                 <div className={classes.input_group}>
-                    <label htmlFor="contractCar">Voiture</label>
+                    <label htmlFor="contractCar">Voiture </label>
                     <select required>
                         {cars.map((car) => {
-                            return(<option ref={carInputRef}>{car.registration}</option>)
+                            return(<option ref={carInputRef} value={car.id}>{car.registration}</option>)
                         })}
                     </select>
                 </div>
@@ -201,25 +157,3 @@ function NewContractForm()
 }
 
 export default NewContractForm;
-/*<div className={classes.input_group}>
-                    <label htmlFor="contractInvoice">Facture</label>
-                    <select required ref={invoiceInputRef}>
-                        {invoices.map((invoice) => {
-                            return(<option>{invoice.paymentDate}</option>)
-                        })}
-                    </select>
-                </div>
-                                <div className={classes.input_group}>
-                    <label htmlFor="advance">Paiement en avance</label>
-                    <input type="number" name="advance" id="advance" required ref={advanceInputRef} defaultValue={context.action === "editContract" ? contract.advance : 0}
-                    className={amountError ? classes.invalid : ""}/>
-                </div>
-                <div className={classes.input_group}>
-                    <label htmlFor="remainder">Reste à payer</label>
-                    <input type="number" name="remainder" id="remainder" readOnly ref={remainderInputRef} defaultValue={context.action === "editContract" ? contract.remainder : 0}
-                    />
-                </div>
-                <div className={classes.input_group}>
-                    <label htmlFor="returnPlace">Lieu de restitution</label>
-                    <input type="text" name="returnPlace" id="returnPlace" required ref={returnPlaceInputRef} defaultValue={context.action === "editContract" ? contract.returnPlace : ""}/>
-                </div>*/

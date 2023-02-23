@@ -28,6 +28,7 @@ function AllClients()
     return(
         <div>
             <h2>Clients</h2>
+            <p>{clients.length} clients</p>
             <ClientTable clients={clients} refresh={getClients} />
         </div>
     )

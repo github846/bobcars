@@ -13,9 +13,6 @@ import AllClients from './Pages/AllClients';
 import NewContract from './Pages/NewContract';
 import SearchContract from './Pages/SearchContract';
 import AllContracts from './Pages/AllContracts';
-// import NewInvoice from './Pages/NewInvoice';
-// import SearchInvoice from './Pages/SearchInvoice';
-// import AllInvoices from './Pages/AllInvoices';
 import NewOption from './Pages/NewOption';
 import SearchOption from './Pages/SearchOption';
 import AllOptions from './Pages/AllOptions';
@@ -40,7 +37,6 @@ function App() {
         <Route path='/contracts' element={<AllContracts />}></Route>
         <Route path='/newcontract' element={<NewContract />}></Route>
         <Route path='/searchcontract' element={<SearchContract />}></Route>
-        
         <Route path='/options' element={<AllOptions />}></Route>
         <Route path='/newoption' element={<NewOption />}></Route>
         <Route path='/searchoption' element={<SearchOption />}></Route>
@@ -50,9 +46,5 @@ function App() {
     <Footer />
   </div>;
 }
-
-/*<Route path='/invoices' element={<AllInvoices />}></Route>
-    <Route path='/newinvoice' element={<NewInvoice />}></Route>
-    <Route path='/searchinvoice' element={<SearchInvoice />}></Route>*/
 
 export default App;

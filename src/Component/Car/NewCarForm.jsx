@@ -101,46 +101,46 @@ function NewCarForm()
         <div>
             <form onSubmit={submitHandler} className={classes.form_container}>
             <div className={classes.input_group}>
-                    <label htmlFor="registration">Matricule</label>
+                    <label htmlFor="registration">Matricule </label>
                     <input type="text" name="registration" id="registration" required 
                     ref={registrationInputRef} defaultValue={context.action === "editCar" ? car.registration : ""} />
                 </div>
                 <div className={classes.input_group}>
-                    <label htmlFor="brand">Marque</label>
+                    <label htmlFor="brand">Marque </label>
                     <input type="text" name="brand" id="brand" required 
                     ref={brandInputRef} defaultValue={context.action === "editCar" ? car.brand : ""} />
                 </div>
                 <div className={classes.input_group}>
-                    <label htmlFor="color">Couleur</label>
+                    <label htmlFor="color">Couleur </label>
                     <input type="text" name="color" id="color" 
                     ref={colorInputRef} defaultValue={car ? car.color : ""} required />
                 </div>
                 <div className={classes.input_group}>
-                    <label htmlFor="fuel">Carburant</label>
+                    <label htmlFor="fuel">Carburant </label>
                     <input type="text" name="fuel" id="fuel" 
                     ref={fuelInputRef} defaultValue={car ? car.fuel : ""} required />
                 </div>
                 <div className={classes.input_group}>
-                    <label htmlFor="cylinder">Puissance</label>
+                    <label htmlFor="cylinder">Puissance </label>
                     <input type="number" name="cylinder" id="cylinder" step="0.1"
                      ref={cylinderInputRef} defaultValue={car ? car.cylinder : ""} required />
                 </div>
                 <div className={classes.input_group}>
-                    <label htmlFor="maxSpeed">Vitesse max</label>
+                    <label htmlFor="maxSpeed">Vitesse max </label>
                     <input type="number" name="maxSpeed" id="maxSpeed" step="10"
                      ref={maxSpeedInputRef} defaultValue={car ? car.maxSpeed : ""} required />
                 </div>
                 <div className={classes.input_group}>
-                    <label htmlFor="inUse">En service</label>
+                    <label htmlFor="inUse">En service </label>
                     <input type="checkbox" name="inUse" id="inUse" ref={inUseInputRef} defaultValue={car ? car.inUse : inUse === false} onClick={() => {setInUse(!inUse);}}/>
                 </div>
                 <div className={classes.input_group}>
-                    <label htmlFor="mileage">Kilométrage</label>
+                    <label htmlFor="mileage">Kilométrage </label>
                     <input type="number" name="mileage" id="mileage" step="100"
                      ref={mileageInputRef} defaultValue={car ? car.mileage : ""} required />
                 </div>
                 <div className={classes.input_group}>
-                    <label htmlFor="firstUse">Date de mise en service</label>
+                    <label htmlFor="firstUse">Date de mise en service </label>
                     <input type="date" name="firstUse" id="firstUse" 
                     ref={firstUseInputRef} defaultValue={car ? car.firstUse : ""} required />
                 </div>

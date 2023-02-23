@@ -29,7 +29,7 @@ function AllCars()
     return (
         <div>
             <h2>Voitures</h2>
-            <p>{cars.length} cars</p>
+            <p>{cars.length} voitures</p>
             <CarList cars={cars} refresh={getCars} />
         </div>
     )

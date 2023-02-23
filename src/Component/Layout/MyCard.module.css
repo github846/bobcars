@@ -3,9 +3,10 @@
     background: #eee;
     border-radius: 10px;
     box-shadow: #888 2px 2px 2px;
-    padding: 2%;
+    padding: 5%;
     box-sizing: border-box;
     width: 75%;
+    margin: 10px;
 }
 
 .valid

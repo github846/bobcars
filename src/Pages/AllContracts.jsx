@@ -28,6 +28,7 @@ function AllContracts()
     return(
         <div>
             <h2>Contrats</h2>
+            <p>{contracts.length} contrats</p>
             <ContractList contracts={contracts} refresh={getContracts} />
         </div>
     )

@@ -1,5 +1,5 @@
 import classes from "./NavBar.module.css";
-import React, { useState } from "react";
+import React  from "react";
 import { Link } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu";
 
@@ -38,17 +38,6 @@ function Navbar()
             {link: "/searchcontract", title: "Search"}
         ]
     };
-
-    /*const invoiceMenu =
-    {
-        title: "Invoices",
-        items:
-        [
-            {link: "/invoices", title: "List"},
-            {link: "/newinvoice", title: "New"},
-            {link: "/searchinvoice", title: "Search"}
-        ]
-    };*/
 
     const optionMenu =
     {
@@ -91,7 +80,3 @@ function Navbar()
 }
 
 export default Navbar;
-
-/*<li>
-    <DropdownMenu menu={invoiceMenu} />
-</li>*/

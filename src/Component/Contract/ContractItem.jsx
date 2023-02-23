@@ -13,13 +13,14 @@ function ContractItem(props)
         context.setContract(props.contract);
         context.setAction("editContract");
     };
-    let n = new Date(props.contract.contractEnd);
-    let u = new Date(props.contract.contractStart);
-    let j = props.contract.dailyPrice;
-    n = n.getTime();
-    u = u.getTime();
-    let z = (n - u)/(86400000)+1;
-    let w = j*z
+
+    let contractEnd = new Date(props.contract.contractEnd);
+    let contractStart = new Date(props.contract.contractStart);
+    let dailyPrice = props.contract.dailyPrice;
+    contractEnd = contractEnd.getTime();
+    contractStart = contractStart.getTime();
+    let contractDuration = (contractEnd - contractStart)/(86400000)+1;
+    let totalPrice = dailyPrice*contractDuration;
 
     return(
         <div className={classes.card}>
@@ -28,12 +29,7 @@ function ContractItem(props)
                 <p>Début: {props.contract.contractStart}</p>
                 <p>Fin: {props.contract.contractEnd}</p>
                 <p>Prix journalier: {props.contract.dailyPrice}</p>
-                <p>Prix total: {w}</p>
-                {console.log(n)}
-                {console.log(u)}
-                {console.log(z)}
-                {console.log(j)}
-                {console.log(w)}
+                <p>Prix total: {totalPrice}</p>
             </div>
             <div className={classes.actions}>
                 <div className={classes.actions_item} onClick={() => props.onDelete(props.contract.id)}>

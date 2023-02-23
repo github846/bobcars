@@ -5,6 +5,11 @@
     padding: 5px;
 }
 
+.foreign_key
+{
+    display: none;
+}
+
 button
 {
     background: #4df;

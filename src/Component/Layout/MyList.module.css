@@ -1,7 +1,5 @@
 .my_container
 {
-    width: 80%;
-    background: #eee;
     display: grid;
     grid-template-columns: auto auto auto auto;
 }

@@ -3,7 +3,7 @@ import MainContext from "../../Store/Main";
 import classes from "../Layout/MyCard.module.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faList, faHouseMedical, faFilePen } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faFilePen } from "@fortawesome/free-solid-svg-icons";
 
 function ContractItem(props)
 {
@@ -25,21 +25,17 @@ function ContractItem(props)
     return(
         <div className={classes.card}>
             <div>
-                <p>Signature: {props.contract.signDate}</p>
-                <p>Début: {props.contract.contractStart}</p>
-                <p>Fin: {props.contract.contractEnd}</p>
-                <p>Prix journalier: {props.contract.dailyPrice}</p>
-                <p>Prix total: {totalPrice}</p>
+                <p>Client: {props.contract.client.fname}</p>
+                <p>Voiture: {props.contract.car.registration}</p>
+                <p>Signature: <span className={classes.card_value}>{props.contract.signDate}</span></p>
+                <p>Début: <span className={classes.card_value}>{props.contract.contractStart}</span></p>
+                <p>Fin: <span className={classes.card_value}>{props.contract.contractEnd}</span></p>
+                <p>Prix journalier: <span className={classes.card_value}>{props.contract.dailyPrice}</span></p>
+                <p>Prix total: <span className={classes.card_value}>{totalPrice}</span></p>
             </div>
             <div className={classes.actions}>
-                <div className={classes.actions_item} onClick={() => props.onDelete(props.contract.id)}>
-                    <FontAwesomeIcon icon={faTrash} className={classes.actions_icon}></FontAwesomeIcon> Delete
-                </div>
-                <div className={classes.actions_item}>
-                    <FontAwesomeIcon icon={faList} className={classes.actions_icon}></FontAwesomeIcon>
-                </div>
-                <div className={classes.actions_item}>
-                    <FontAwesomeIcon icon={faHouseMedical} className={classes.actions_icon}></FontAwesomeIcon>
+                <div className={classes.delete_icon} onClick={() => props.onDelete(props.contract.id)}>
+                    <FontAwesomeIcon icon={faTrash} className={classes.delete_icon}></FontAwesomeIcon> Delete
                 </div>
                 <div className={classes.actions_item} onClick={updateContract}>
                     <Link to="/newcontract">

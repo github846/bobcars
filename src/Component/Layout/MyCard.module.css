@@ -14,9 +14,14 @@
     color: #2d6;
 }
 
-.invalid
+.invalid, .delete_icon
 {
     color: #f44;
+}
+
+.delete_icon
+{
+    cursor: pointer;
 }
 
 .actions_icon
@@ -29,8 +34,28 @@
     background: #4df;
 }
 
+.card_img
+{
+    width: 50%;
+    height: 50%;
+    align-self: center;
+}
+
+.card_value
+{
+    color: #06d;
+    font-size: 1.2em;
+}
+@media screen and (max-width: 720px) {
+    .card_value {
+        color: #06d;
+        font-size: 1em;
+    }
+  }
+
 .actions
 {
+    margin-top: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;

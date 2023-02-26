@@ -3,6 +3,7 @@
     border-radius: 5px;
     border: none;
     padding: 5px;
+    align-self: center;
 }
 
 .foreign_key
@@ -20,6 +21,7 @@ button
 {
     background: #06D;
     color: #fff;
+    cursor: pointer;
 }
 
 .form_container
@@ -27,7 +29,6 @@ button
     padding: 2%;
     background: #eee;
     box-shadow: #888 2px 2px 2px;
-    width: 50%;
     border-radius: 5px;
 }
 
@@ -51,14 +52,4 @@ button
 {
     border: #f44 1px solid;
     color: #f44;
-}
-
-.radio_group
-{
-    display: flex;
-}
-
-.radio_item
-{
-    padding: 1%;
 }

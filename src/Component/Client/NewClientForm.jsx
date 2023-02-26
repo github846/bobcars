@@ -53,7 +53,6 @@ function NewClientForm()
             }
             navigate("/clients");
             console.log(response);
-            
         }
         catch(error)
         {

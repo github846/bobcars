@@ -1,10 +1,11 @@
 import classes from "./NavBar.module.css";
 import React  from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu";
 
 function Navbar()
 {
+    let navigate = useNavigate();
 
     const carMenu =
     {
@@ -50,10 +51,19 @@ function Navbar()
         ]
     };
 
+    const logout = () => {
+        localStorage.setItem("loggedIn", "");
+        navigate("/");
+        window.location.reload();
+    }
+
     return(
         <div className={classes.container}>
             <header className={classes.my_header}>
-                <div className={classes.logo}>Bob's cars</div>
+                <div className={classes.logo}>
+                    <img src="https://www.sgvgreenway.org/img/managed/Image/76/file.png" width={100} height={100}/>
+                    Bob's cars
+                </div>
                 <ul className={classes.my_list}>
                     <li>
                         <Link to="/home">Home</Link>
@@ -72,6 +82,9 @@ function Navbar()
                     </li>
                     <li>
                         <Link to="/about">About</Link>
+                    </li>
+                    <li className={classes.logout} onClick={logout}>
+                        Logout
                     </li>
                 </ul>
             </header>

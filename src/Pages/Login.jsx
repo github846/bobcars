@@ -1,27 +1,26 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import classes from '../Component/Layout/MyForm.module.css';
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import MainContext from "../Store/Main";
 
-function Login()
+function Login({ loginCheck })
 {
     const passcodeInputRef = useRef("");
     let navigate = useNavigate();
-    const context = useContext(MainContext);
+    const [error, setError] = useState("");
 
-    const submitHandler = async(e) =>
+    const submitHandler = async(event) =>
     {
-        e.preventDefault();
+        event.preventDefault();
         const passcodeValue = passcodeInputRef.current.value;
         if (passcodeValue === '123456')
         {
-            context.setLoggedIn(true);
+            loginCheck();
             navigate("/home");
         }
         else
         {
-            alert('Incorrect password.')
+            setError("Incorrect password.");
+            console.log(error);
         };
     }
 
@@ -31,6 +30,7 @@ function Login()
                 <h1>Admin access</h1>
                 <div className={classes.input_group}>
                     <label htmlFor="signDate">Enter password</label>
+                    <p class="error">{error}</p>
                     <input type="password" name="passcode" id="passcode" required ref={passcodeInputRef}/>
                 </div>
                 <div className={classes.submit_group}>

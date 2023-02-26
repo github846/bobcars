@@ -12,8 +12,7 @@ const MainContext = createContext( // global variables
         setCar: () => {},
         setContract: () => {},
         setOption: () => {},
-        setAction: () => {},
-        setLoggedIn: () => {}
+        setAction: () => {}
     }
 );
 
@@ -24,7 +23,6 @@ export function MainContextProvider(props) // works like props but scope is glob
     const [contract, setContract] = useState();
     const [option, setOption] = useState();
     const [action, setAction] = useState();
-    const [loggedIn, setLoggedIn] = useState();
 
     const context =
     {
@@ -51,18 +49,14 @@ export function MainContextProvider(props) // works like props but scope is glob
         {
             setOption(option);
         },
-
+        // mostly used to change between editing and adding 
+        // in the form
         action: action,
         setAction: (action) =>
         {
             setAction(action);
-        },
-
-        loggedIn: loggedIn,
-        setLoggedIn: (loggedIn) =>
-        {
-            setLoggedIn(loggedIn);
         }
+
     };
 
     return(

@@ -1,11 +1,11 @@
-.image_container
-{
-    width: 200px;
-    height: 200px;
-}
-
 .client_info
 {
     padding: 2%;
+}
+
+.delete
+{
+    color: #fff;
+    background: #f68;
 }
 

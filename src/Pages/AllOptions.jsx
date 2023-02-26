@@ -28,6 +28,7 @@ function AllOptions()
     return (
         <div>
             <h2>Options</h2>
+            <p>{options.length} options</p>
             <OptionList options={options} refresh={getOptions} />
         </div>
     )

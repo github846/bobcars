@@ -18,8 +18,7 @@ function NewCarForm()
     const mileageInputRef = useRef('');
     const inUseInputRef = useRef(false);
     const firstUseInputRef = useRef('');
-    const optionInputRef = useRef([]);
-    // const contractInputRef = useRef('');
+    const optionsInputRef = useRef([]);
     const [inUse, setInUse] = useState(false);
     const [optns, setOptns] = useState([]);
 
@@ -54,9 +53,8 @@ function NewCarForm()
         const mileageValue = mileageInputRef.current.value;
         const inUseValue = inUseInputRef.current.value;
         const firstUseValue = firstUseInputRef.current.value;
-        const optionValue = optionInputRef.current.value;
-        // const contractValue = contractInputRef.current.value;
-        
+        const optionsValue = optionsInputRef.current.value;
+
         const newCar = // creating new object with input values
         {
             registration: registrationValue,
@@ -68,8 +66,7 @@ function NewCarForm()
             mileage: mileageValue,
             inUse: inUseValue,
             firstUse: firstUseValue,
-            option: {title: optionValue}
-            // contract: {id: contractValue}
+            option: {title: optionsValue}
         };
 
         try
@@ -88,7 +85,6 @@ function NewCarForm()
             }
             navigate("/cars/"); // redirect to list
             console.log(response);
-            
         }
         catch(error)
         {
@@ -122,22 +118,22 @@ function NewCarForm()
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="cylinder">Puissance </label>
-                    <input type="number" name="cylinder" id="cylinder" step="0.1"
+                    <input type="number" name="cylinder" id="cylinder" step="0.1" min={0}
                      ref={cylinderInputRef} defaultValue={car ? car.cylinder : ""} required />
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="maxSpeed">Vitesse max </label>
-                    <input type="number" name="maxSpeed" id="maxSpeed" step="10"
+                    <input type="number" name="maxSpeed" id="maxSpeed" step="10" min={0}
                      ref={maxSpeedInputRef} defaultValue={car ? car.maxSpeed : ""} required />
+                </div>
+                <div className={classes.input_group}>
+                    <label htmlFor="mileage">Kilométrage </label>
+                    <input type="number" name="mileage" id="mileage" step="100" min={0}
+                     ref={mileageInputRef} defaultValue={car ? car.mileage : ""} required />
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="inUse">En service </label>
                     <input type="checkbox" name="inUse" id="inUse" ref={inUseInputRef} defaultValue={car ? car.inUse : inUse === false} onClick={() => {setInUse(!inUse);}}/>
-                </div>
-                <div className={classes.input_group}>
-                    <label htmlFor="mileage">Kilométrage </label>
-                    <input type="number" name="mileage" id="mileage" step="100"
-                     ref={mileageInputRef} defaultValue={car ? car.mileage : ""} required />
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="firstUse">Date de mise en service </label>
@@ -145,11 +141,9 @@ function NewCarForm()
                     ref={firstUseInputRef} defaultValue={car ? car.firstUse : ""} required />
                 </div>
                 <div className={classes.input_group}>
-                    <label htmlFor="carOption">Option </label>
-                <div ref={optionInputRef}>
-                    {optns.map((optn) => {
-                        return(<div>{optn.title}<input type="checkbox" /></div>)
-                    })}
+                    <label htmlFor="carOption">Options </label>
+                <div ref={optionsInputRef}>
+                    {optns.map((optn) => {return(<div>{optn.title}<input type="checkbox" /></div>)})}
                 </div>
                 </div>
                 <div className={classes.submit_group}>

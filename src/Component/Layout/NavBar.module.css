@@ -6,6 +6,9 @@
     padding: 2%;
     width: 20%;
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .my_list
@@ -21,6 +24,12 @@
 .my_list li
 {
     padding: 1%;
+    cursor: pointer;
+}
+
+.logout
+{
+    color: #f44;
 }
 
 .container

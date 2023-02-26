@@ -8,17 +8,17 @@ function NewContractForm()
 {
     const context = useContext(MainContext);
     const contract = context.contract;
-    const [dateError, setDateError] = useState(false);
+    const [dateError, setDateError] = useState(true);
+    const [errorMessage, setErrorMessage] = useState("");
     const signDateInputRef = useRef('');
     const contractStartInputRef = useRef('');
     const contractEndInputRef = useRef('');
     const dailyPriceInputRef = useRef('');
-    const carInputRef = useRef(0);
     const clientInputRef = useRef(0);
-    let navigate = useNavigate();
-
+    const carInputRef = useRef(0);
     const [clients, setClients] = useState([]);
     const [cars, setCars] = useState([]);
+    let navigate = useNavigate();
 
     useEffect(() =>
     {
@@ -38,6 +38,7 @@ function NewContractForm()
             console.log(error);
         }
     };
+
     const getCars = async () =>
     {
         try
@@ -50,7 +51,6 @@ function NewContractForm()
             console.log(error);
         }
     };
-
         
     const submitHandler = async(e) =>
     {
@@ -60,8 +60,8 @@ function NewContractForm()
         const contractStartValue = contractStartInputRef.current.value;
         const contractEndValue = contractEndInputRef.current.value;
         const dailyPriceValue = dailyPriceInputRef.current.value;
-        const carValue = carInputRef.current.value;
         const clientValue = clientInputRef.current.value;
+        const carValue = carInputRef.current.value;
 
         const newContract = 
         {
@@ -69,50 +69,46 @@ function NewContractForm()
             contractStart: contractStartValue,
             contractEnd: contractEndValue,
             dailyPrice: dailyPriceValue,
-            car: {id: carValue},
-            client: {id: clientValue}
+            client: {id: clientValue},
+            car: {id: carValue}
         };
         
-        if(contractStartValue > contractEndValue
-             || contractEndValue < signDateValue
-            || contractStartValue < signDateValue )
-        {
-            setDateError(true);
-            return;
-        }
+        if (contractStartValue > contractEndValue){setErrorMessage("Contract can't start after it ends!")}
+        else if (contractEndValue < signDateValue){setErrorMessage("Can't sign contract after it ends!")}
+        else if (contractStartValue < signDateValue){setErrorMessage("Can't start contract before it's signed!")}
         else
-        {
-            setDateError(false);
-        }
-
-        try
-        {
-            let response;
-            if (context.action === "editContract")
+        {   
+            try
             {
-                response = await api.put("/contracts/" + contract.id , newContract);
-                context.setAction("");
-                context.setContract(null);
-            }
-            else // when accessed from menu
-            {
-                response = await api.post("/contracts/", newContract);
+                let response;
+                setDateError(false);
+                if (context.action === "editContract")
+                {
+                    response = await api.put("/contracts/" + contract.id , newContract);
+                    context.setAction("");
+                    context.setContract(null);
+                }
+                else// when accessed from menu
+                {
+                    response = await api.post("/contracts/", newContract);
+                    console.log(response); // redirect to list
+                }
+                alert ("Contract added!")
                 console.log(response);
+                navigate("/contracts");
             }
-            navigate("/contracts"); // redirect to list
-            console.log(response);
-            
-        }
-        catch(error)
-        {
-            alert('nope');
-            console.log(error);
+            catch(error)
+            {
+                alert('nope');
+                console.log(error);
+            }
         }
     }
     
     return(
         <div className={classes.form_container}>
             <form onSubmit={submitHandler}>
+                <p className="error">{errorMessage}</p>
                 <div className={classes.input_group}>
                     <label htmlFor="signDate">Signature</label>
                     <input type="date" name="signDate" id="signDate" required ref={signDateInputRef} defaultValue={context.action === "editContract" ? contract.signDate : ""}
@@ -130,7 +126,7 @@ function NewContractForm()
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="dailyPrice">Prix journalier </label>
-                    <input type="number" name="dailyPrice" id="dailyPrice" required ref={dailyPriceInputRef} defaultValue={context.action === "editContract" ? contract.dailyPrice : 0}/>
+                    <input type="number" name="dailyPrice" id="dailyPrice" required ref={dailyPriceInputRef} min={0} defaultValue={context.action === "editContract" ? contract.dailyPrice : 0}/>
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="contractClient">Client </label>

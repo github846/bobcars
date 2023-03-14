@@ -4,7 +4,7 @@ import NewContractForm from "../Component/Contract/NewContractForm";
 function NewContract()
 {
     return (
-        <div>
+        <div class="centered">
             <h2>Ajouter un nouveau contrat</h2>
             <NewContractForm/>
         </div>

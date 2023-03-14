@@ -10,12 +10,16 @@ function NewContractForm()
     const contract = context.contract;
     const [dateError, setDateError] = useState(true);
     const [errorMessage, setErrorMessage] = useState("");
+
     const signDateInputRef = useRef('');
     const contractStartInputRef = useRef('');
     const contractEndInputRef = useRef('');
-    const dailyPriceInputRef = useRef('');
-    const clientInputRef = useRef(0);
-    const carInputRef = useRef(0);
+    const dailyPriceInputRef = useRef(0);
+    const clientInputRef = useRef(null);
+    const carInputRef = useRef(null);
+
+    const [selectedClientId, setSelectedClientId] = useState(null);
+    const [selectedCarId, setSelectedCarId] = useState(null);
     const [clients, setClients] = useState([]);
     const [cars, setCars] = useState([]);
     let navigate = useNavigate();
@@ -60,8 +64,8 @@ function NewContractForm()
         const contractStartValue = contractStartInputRef.current.value;
         const contractEndValue = contractEndInputRef.current.value;
         const dailyPriceValue = dailyPriceInputRef.current.value;
-        const clientValue = clientInputRef.current.value;
-        const carValue = carInputRef.current.value;
+        const client_id = Number(clientInputRef.current.value);
+        const car_id = Number(carInputRef.current.value);
 
         const newContract = 
         {
@@ -69,8 +73,10 @@ function NewContractForm()
             contractStart: contractStartValue,
             contractEnd: contractEndValue,
             dailyPrice: dailyPriceValue,
-            client: {id: clientValue},
-            car: {id: carValue}
+            //carId: Number(selectedCarId),
+            //clientId: Number(selectedClientId)
+            client_id,
+            car_id
         };
         
         if (contractStartValue > contractEndValue){setErrorMessage("Contract can't start after it ends!")}
@@ -87,13 +93,14 @@ function NewContractForm()
                     response = await api.put("/contracts/" + contract.id , newContract);
                     context.setAction("");
                     context.setContract(null);
+                    console.log(response);
                 }
                 else// when accessed from menu
                 {
                     response = await api.post("/contracts/", newContract);
                     console.log(response); // redirect to list
                 }
-                alert ("Contract added!")
+                alert (`Contract added! ${typeof newContract.client_id} / ${newContract.client_id} and ${typeof newContract.car_id} / ${newContract.car_id}`)
                 console.log(response);
                 navigate("/contracts");
             }
@@ -104,10 +111,19 @@ function NewContractForm()
             }
         }
     }
+
+    const handleClientChange = (e) => {
+        setSelectedClientId(Number(e.target.value));
+      };
+    
+      const handleCarChange = (e) => {
+        setSelectedCarId(Number(e.target.value));
+      };
     
     return(
-        <div className={classes.form_container}>
-            <form onSubmit={submitHandler}>
+        <div>
+            <form className={classes.form_container} onSubmit={submitHandler}>
+                <p>{`Car: ${selectedCarId} ${typeof(selectedCarId)} | Client: ${selectedClientId} ${typeof(selectedClientId)}`}</p>
                 <p className="error">{errorMessage}</p>
                 <div className={classes.input_group}>
                     <label htmlFor="signDate">Signature</label>
@@ -130,17 +146,19 @@ function NewContractForm()
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="contractClient">Client </label>
-                    <select required>
+                    <select required ref={clientInputRef} value={selectedClientId} onChange={handleClientChange}>
+                        <option>No client selected</option>
                         {clients.map((client) => {
-                            return(<option ref={clientInputRef} value={client.id}>{client.fname}</option>)
+                            return(<option key={client.id} value={client.id}>{client.fname}</option>)
                         })}
                     </select>
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="contractCar">Voiture </label>
-                    <select required>
+                    <select required ref={carInputRef} value={selectedCarId} onChange={handleCarChange}>
+                        <option>No car selected</option>
                         {cars.map((car) => {
-                            return(<option ref={carInputRef} value={car.id}>{car.registration}</option>)
+                            return (<option key={car.id} value={car.id}>{car.registration}</option>)
                         })}
                     </select>
                 </div>

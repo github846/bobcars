@@ -4,7 +4,7 @@ import NewOptionForm from "../Component/Option/NewOptionForm";
 function NewOption()
 {
     return (
-        <div>
+        <div class="centered">
             <h2>Ajouter une nouvelle option</h2>
             <NewOptionForm/>
         </div>

@@ -6,22 +6,22 @@
     align-self: center;
 }
 
-.foreign_key
+.submit_group input
 {
-    display: none;
+    background: #06D;
+    color: #fff;
+    cursor: pointer;
+}
+
+.input_group
+{
+    padding: 1%;
 }
 
 button
 {
     background: #4df;
     color: #06d;
-}
-
-.submit_group input
-{
-    background: #06D;
-    color: #fff;
-    cursor: pointer;
 }
 
 .form_container
@@ -41,11 +41,9 @@ button
     border-radius: 5px;
     margin-top: 20%;
     margin-left: 25%;
-}
-
-.input_group
-{
-    padding: 1%;
+    width: 500px;
+    display: flex;
+    justify-content: center;
 }
 
 .invalid

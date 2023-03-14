@@ -4,7 +4,7 @@ import NewClientForm from "../Component/Client/NewClientForm";
 function NewClient()
 {
     return (
-        <div>
+        <div class="centered">
             <h2>Ajouter un nouveau client</h2>
             <NewClientForm/>
         </div>

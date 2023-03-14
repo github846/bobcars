@@ -7,7 +7,6 @@ const MainContext = createContext( // global variables
         contract: null,
         option: null,
         action: "",
-        loggedIn: false,
         setClient: () => {},
         setCar: () => {},
         setContract: () => {},

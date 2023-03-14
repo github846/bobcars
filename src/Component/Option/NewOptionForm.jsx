@@ -55,7 +55,7 @@ function NewOptionForm()
             <div className={classes.input_group}>
                     <label htmlFor="title">Nom </label>
                     <input type="text" name="title" id="title" required 
-                    ref={titleInputRef} defaultValue={context.action === "editOption" ? option.name : ""} />
+                    ref={titleInputRef} defaultValue={context.action === "editOption" ? option.title : ""} />
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="description">Description </label>

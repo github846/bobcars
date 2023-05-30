@@ -10,16 +10,9 @@ function NewContractForm()
     const contract = context.contract;
     const [dateError, setDateError] = useState(true);
     const [errorMessage, setErrorMessage] = useState("");
-
     const signDateInputRef = useRef('');
     const contractStartInputRef = useRef('');
     const contractEndInputRef = useRef('');
-    const dailyPriceInputRef = useRef(0);
-    const clientInputRef = useRef(null);
-    const carInputRef = useRef(null);
-
-    const [selectedClientId, setSelectedClientId] = useState(null);
-    const [selectedCarId, setSelectedCarId] = useState(null);
     const [clients, setClients] = useState([]);
     const [cars, setCars] = useState([]);
     let navigate = useNavigate();
@@ -59,25 +52,18 @@ function NewContractForm()
     const submitHandler = async(e) =>
     {
         e.preventDefault();
-
         const signDateValue = signDateInputRef.current.value;
         const contractStartValue = contractStartInputRef.current.value;
         const contractEndValue = contractEndInputRef.current.value;
-        const dailyPriceValue = dailyPriceInputRef.current.value;
-        const client_id = Number(clientInputRef.current.value);
-        const car_id = Number(carInputRef.current.value);
-
-        const newContract = 
-        {
-            signDate: signDateValue,
-            contractStart: contractStartValue,
-            contractEnd: contractEndValue,
-            dailyPrice: dailyPriceValue,
-            //carId: Number(selectedCarId),
-            //clientId: Number(selectedClientId)
-            client_id,
-            car_id
-        };
+        const formData = new FormData(e.target);
+        const newContract = {};
+        for (let [key, value] of formData.entries()) {
+            if (key === 'client' || key === 'car') {
+              newContract[key] = {id: Number(value)};
+            } else {
+              newContract[key] = value;
+            }
+          }
         
         if (contractStartValue > contractEndValue){setErrorMessage("Contract can't start after it ends!")}
         else if (contractEndValue < signDateValue){setErrorMessage("Can't sign contract after it ends!")}
@@ -90,7 +76,7 @@ function NewContractForm()
                 setDateError(false);
                 if (context.action === "editContract")
                 {
-                    response = await api.put("/contracts/" + contract.id , newContract);
+                    response = await api.put("/contracts/" + contract.id, JSON.stringify(newContract));
                     context.setAction("");
                     context.setContract(null);
                     console.log(response);
@@ -100,7 +86,7 @@ function NewContractForm()
                     response = await api.post("/contracts/", newContract);
                     console.log(response); // redirect to list
                 }
-                alert (`Contract added! ${typeof newContract.client_id} / ${newContract.client_id} and ${typeof newContract.car_id} / ${newContract.car_id}`)
+                alert ("Contract added!")
                 console.log(response);
                 navigate("/contracts");
             }
@@ -111,43 +97,34 @@ function NewContractForm()
             }
         }
     }
-
-    const handleClientChange = (e) => {
-        setSelectedClientId(Number(e.target.value));
-      };
-    
-      const handleCarChange = (e) => {
-        setSelectedCarId(Number(e.target.value));
-      };
     
     return(
         <div>
             <form className={classes.form_container} onSubmit={submitHandler}>
-                <p>{`Car: ${selectedCarId} ${typeof(selectedCarId)} | Client: ${selectedClientId} ${typeof(selectedClientId)}`}</p>
                 <p className="error">{errorMessage}</p>
                 <div className={classes.input_group}>
                     <label htmlFor="signDate">Signature</label>
-                    <input type="date" name="signDate" id="signDate" required ref={signDateInputRef} defaultValue={context.action === "editContract" ? contract.signDate : ""}
+                    <input type="date" name="signDate" id="signDate" ref={signDateInputRef} required defaultValue={context.action === "editContract" ? contract.signDate : ""}
                     className={dateError ? classes.invalid : ""} />
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="contractStart">Début </label>
-                    <input type="date" name="contractStart" id="contractStart" required ref={contractStartInputRef} defaultValue={context.action === "editContract" ? contract.signDate : ""}
+                    <input type="date" name="contractStart" id="contractStart" ref={contractStartInputRef} required defaultValue={context.action === "editContract" ? contract.signDate : ""}
                     className={dateError ? classes.invalid : ""}/>
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="contractEnd">Fin </label>
-                    <input type="date" name="contractEnd" id="contractEnd" required ref={contractEndInputRef} defaultValue={context.action === "editContract" ? contract.contractEnd : ""}
+                    <input type="date" name="contractEnd" id="contractEnd" ref={contractEndInputRef} required defaultValue={context.action === "editContract" ? contract.contractEnd : ""}
                     className={dateError ? classes.invalid : ""}/>
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="dailyPrice">Prix journalier </label>
-                    <input type="number" name="dailyPrice" id="dailyPrice" required ref={dailyPriceInputRef} min={0} defaultValue={context.action === "editContract" ? contract.dailyPrice : 0}/>
+                    <input type="number" name="dailyPrice" id="dailyPrice" required min={0} defaultValue={context.action === "editContract" ? contract.dailyPrice : 0}/>
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="contractClient">Client </label>
-                    <select required ref={clientInputRef} value={selectedClientId} onChange={handleClientChange}>
-                        <option>No client selected</option>
+                    <select required name="client">
+                        <option value="">No client selected</option>
                         {clients.map((client) => {
                             return(<option key={client.id} value={client.id}>{client.fname}</option>)
                         })}
@@ -155,8 +132,8 @@ function NewContractForm()
                 </div>
                 <div className={classes.input_group}>
                     <label htmlFor="contractCar">Voiture </label>
-                    <select required ref={carInputRef} value={selectedCarId} onChange={handleCarChange}>
-                        <option>No car selected</option>
+                    <select required name="car">
+                        <option value="">No car selected</option>
                         {cars.map((car) => {
                             return (<option key={car.id} value={car.id}>{car.registration}</option>)
                         })}

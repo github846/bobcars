@@ -25,8 +25,8 @@ function ContractItem(props)
     return(
         <div className={classes.card}>
             <div>
-                <p>Client: {props.contract.clientId}</p>
-                <p>Voiture: {props.contract.carId}</p>
+                <p>Client: {props.contract.client.id}</p>
+                <p>Voiture: {props.contract.car.id}</p>
                 <p>Signature: <span className={classes.card_value}>{props.contract.signDate}</span></p>
                 <p>Début: <span className={classes.card_value}>{props.contract.contractStart}</span></p>
                 <p>Fin: <span className={classes.card_value}>{props.contract.contractEnd}</span></p>
